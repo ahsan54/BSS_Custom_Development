@@ -107,6 +107,20 @@ Backend extensions include get_amount_in_words() for text conversion, dynamic re
 
 
 # Salary_Register_Excel_Report
+Developed a dynamic Salary Register Report, which generates a comprehensive salary register in an Excel format, with a detailed breakdown for employees.
+
+Employee Information: Displays employee ID, name, CNIC, bank account, and joining date.
+
+Salary Breakdown: Lists gross salary, basic salary, reimbursements, deductions (income tax, health, EOBI, loans, unpaid leaves), total deductions, and net salary.
+
+Grand Totals: Includes grand totals for all categories at the end of the report for easy summary.
+
+Banking Information: Includes a separate sheet showing net salary and bank account numbers for payment processing.
+
+
+
+
+
 
 # Ma_HR-Employee_Pdf_Reports
 
