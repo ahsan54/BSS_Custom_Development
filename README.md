@@ -1,4 +1,4 @@
-# Dev Print Cheque
+# Dev_Print_Cheque
 Migrated The Module To Odoo 16 by adding attrs in invisible , required attributes then implemented the custom functionality.
 #### Added Dynamic Cheque Numbering and Bank-Specific Logic
 Introduced the journal_type field, related to journal_id.type, to dynamically toggle the visibility of the is_a/c_pay, custom_partner_title, and cheque_no fields. These fields are only visible when the journal type is set to "bank".
@@ -23,7 +23,7 @@ Ensured that the Meezan and MCB sequences operate independently of each other, p
 
 
 
-# Accounting Customization
+# Accounting_Customization
 Removed the working of approvals related to amount ranges and developed this module to handle approvals section.
 Extended the account.payment model to include a custom approval workflow with new states: submit_approval, approval_one, approval_two, posted, and cancel.
 Overrided  state field to manage payment approvals at different stages.
@@ -34,6 +34,7 @@ Overrode action_post, action_cancel, and action_draft methods to update the cust
 Enhanced the approval process by integrating scheduled activities and user notifications to ensure timely action on payments.
 
 
+# Account_Settings_Inherited
 
 
 
@@ -51,12 +52,11 @@ Enhanced the approval process by integrating scheduled activities and user notif
 
 
 
+# Gd_Custom_Reports 
 
-# Gd Custom Reports 
+# Salary_Register_Excel_Report
 
-# Salary Register Excel Report
-
-# Ma_HR-Employee Pdf Reports
+# Ma_HR-Employee_Pdf_Reports
 
 # Sh_Portal_DashBoard
 Enhanced Leave Request Portal: Added functionality for employees to request full-day or half-day leaves through the portal. Validates allocated leave types, handles unpaid leaves, and calculates leave durations dynamically.
