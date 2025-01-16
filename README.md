@@ -60,25 +60,6 @@ Display the last created purchase journal for vendor bills, while retaining defa
 This module provides flexibility by allowing admins to define a default payment journal while ensuring seamless functionality across different accounting workflows.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Gd_Custom_Reports 
-
-# Salary_Register_Excel_Report
-
-# Ma_HR-Employee_Pdf_Reports
-
 # Sh_Portal_DashBoard
 #### Enhanced Leave Request Portal: 
 Added functionality for employees to request full-day or half-day leaves through the portal. Validates allocated leave types, handles unpaid leaves, and calculates leave durations dynamically.
@@ -93,3 +74,50 @@ Designed a detailed loan view for employees to track their loan payment schedule
 
 #### Validation and Security: 
 Incorporated proper validation, error handling, and security measures for user-related operations across the portal features.
+
+
+# Gd_Custom_Reports 
+Dynamic Payment and Receipt Voucher Report
+##### Developed a dynamic voucher report in Odoo, adapting titles and content based on journal type and payment direction:
+
+Cash Payment/Receipt Vouchers for cash transactions.
+Bank Payment/Receipt Vouchers for bank transactions.
+
+#### Key Enhancements:
+Dynamically displays partner names, voucher numbers, and dates.
+
+Adjusts fields like Cheque No for specific cases (e.g., inbound bank payments).
+
+Built a detailed account lines table with account details, cost center, and calculated totals.
+
+Added amount in words conversion using a backend utility for multilingual support.
+
+Includes formatted remarks and approval signatures.
+
+Backend extensions include get_amount_in_words() for text conversion, dynamic report titles via print_report_name, and analytic distribution formatting for clear account allocations. This ensures clarity and flexibility across diverse payment scenarios.
+
+
+
+
+
+
+
+
+
+
+# Salary_Register_Excel_Report
+
+# Ma_HR-Employee_Pdf_Reports
+
+
+
+
+
+
+
+
+
+
+
+
+
