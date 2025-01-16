@@ -3,6 +3,33 @@
 ## Dev Print Cheque
 
 ## Accounting Customization
+Removed the working of approvals related to amount ranges and developed this module to handle approvals section.
+Extended the account.payment model to include a custom approval workflow with new states: submit_approval, approval_one, approval_two, posted, and cancel.
+Overrided  state field to manage payment approvals at different stages.
+Implemented the following methods:
+action_submit_for_approval: Moves the payment to the "Submitted for Approval" state and schedules an activity for a specific user with a deadline and approval reminder.
+action_approval_1 and action_approval_2: Transition payments to their respective approval levels.
+Overrode action_post, action_cancel, and action_draft methods to update the custom state field while maintaining core functionality.
+Enhanced the approval process by integrating scheduled activities and user notifications to ensure timely action on payments.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Gd Custom Reports 
 
