@@ -81,6 +81,7 @@ Dynamic Payment and Receipt Voucher Report
 ##### Developed a dynamic voucher report in Odoo, adapting titles and content based on journal type and payment direction:
 
 Cash Payment/Receipt Vouchers for cash transactions.
+
 Bank Payment/Receipt Vouchers for bank transactions.
 
 #### Key Enhancements:
