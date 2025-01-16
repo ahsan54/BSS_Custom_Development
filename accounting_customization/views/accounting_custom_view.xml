@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_payment_form_inherit" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_post']" position="before">
+
+                    <button name="action_submit_for_approval" type="object" string="Submit for Approval"
+                            class="oe_highlight"
+                            attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+
+
+                    <button name="action_approval_1" type="object" string="Approval-1" class="btn-primary"
+                            groups="accounting_customization.approval_one"
+                            attrs="{'invisible': [('state', 'not in', ['submit_approval'])]}"/>
+
+                    <button name="action_approval_2" type="object" string="Approval-2" class="btn-success"
+                            groups="accounting_customization.approval_two"
+                            attrs="{'invisible': [('state', 'not in', ['approval_one'])]}"/>
+                </xpath>
+
+                <xpath expr="//sheet" position="inside">
+                    <statusbar
+                            statusbar_visible="['draft', 'action_submit_approval', 'approval_one', 'approval_two', 'posted', 'cancel']"
+                            model="account.payment" name="state"/>
+                </xpath>
+
+
+                <xpath expr="//button[@name='action_cancel']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('state', 'not in', ['approval_two'])]}</attribute>
+                </xpath>
+
+                <xpath expr="//button[@name='action_post']" position="attributes">
+                    <attribute name="attrs">{'invisible': [('state', 'not in', ['approval_two'])]}</attribute>
+                </xpath>
+                
+                <xpath expr="//field[@name='journal_id']" position="after">
+                    <field name="state"/>
+                </xpath>
+
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
