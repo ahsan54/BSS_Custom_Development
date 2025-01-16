@@ -2,10 +2,13 @@
 Migrated The Module To Odoo 16 by adding attrs in invisible , required attributes then implemented the custom functionality.
 #### Added Dynamic Cheque Numbering and Bank-Specific Logic
 Introduced the journal_type field, related to journal_id.type, to dynamically toggle the visibility of the is_a/c_pay, custom_partner_title, and cheque_no fields. These fields are only visible when the journal type is set to "bank".
-###### Implemented two separate sequences for generating cheque numbers:
-Meezan Bank Sequence: Automatically generates cheque numbers for journals categorized under "Meezan" in the bank_category field.
-MCB Bank Sequence: Similarly, generates cheque numbers for journals categorized under "MCB".
+##### Implemented two separate sequences for generating cheque numbers:
+###### Meezan Bank Sequence: 
+Automatically generates cheque numbers for journals categorized under "Meezan" in the bank_category field.
+###### MCB Bank Sequence: 
+Similarly, generates cheque numbers for journals categorized under "MCB".
 Cheque numbers are dynamically generated based on the selected bank's sequence. The sequence only propagates when the record is saved, ensuring consistency.
+
 Users can manually update the cheque number. The sequence dynamically adjusts to reflect the next number based on the manually entered value. For example, if the current cheque number is 00003 and the user updates it to 00007, the next cheque number will automatically generate as 00008.
 Ensured that the Meezan and MCB sequences operate independently of each other, preventing any interference between the two categories.
 
