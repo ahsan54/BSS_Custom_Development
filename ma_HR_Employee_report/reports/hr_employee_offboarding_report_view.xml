@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="hr_employee_offboarding_report_view" name="HR Employee Off Boarding report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page" style="margin-left: 20px; margin-right: 20px;">
+                            <br/>
+                            <div class="header">
+                                <div class="col-4">
+                                    <img src="/ma_HR_Employee_report/static/src/img/images/header.png"
+                                         alt="Company Logo"
+                                         class="header-image"/>
+                                </div>
+                            </div>
+
+
+                            <div class="col text-center">
+                                <p style="text-decoration: underline; font-size:24px; font-weight: bold">OFFER FOR
+                                    Off-boarding Checklist</p>
+                            </div>
+
+
+                            <div class="row" style="font-weight:bold;">
+                                <div class="col-2">
+                                    <p>Notice Period</p>
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                                <style>
+                                    ul {
+                                        list-style-type: none; /* Remove default bullets */
+                                        padding: 0;
+                                    }
+
+                                    ul li {
+                                        display: flex; /* Align checkbox and text inline */
+                                        align-items: center; /* Vertically center text with checkbox */
+                                    }
+
+                                    li input[type="checkbox"] {
+                                        margin-right: 20px; /* Add space between checkbox and text */
+                                    }
+                                </style>
+                                <ul>
+                                    <li><input type="checkbox"/> <span>Resignation/ Termination of Employee - </span></li>
+                                    <li><input type="checkbox"/> <span>Knowledge Transfer (Concern Lead)– </span></li>
+                                </ul>
+                            </div>
+
+                            <div class="row" style="font-weight:bold;">
+                                <div class="col-2">
+                                    <p>Last Working Day</p>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                                <style>
+                                    ul {
+                                        list-style-type: none; /* Remove default bullets */
+                                        padding: 0;
+                                    }
+
+                                    ul li {
+                                        display: flex; /* Align checkbox and text inline */
+                                        align-items: center; /* Vertically center text with checkbox */
+                                    }
+
+                                    li input[type="checkbox"] {
+                                        margin-right: 20px; /* Add space between checkbox and text */
+                                    }
+                                </style>
+                                <ul>
+                                    <li><input type="checkbox"/> <span>Laptop and Accessories Hand over and Documents</span>
+                                        (IT)</li>
+                                    <li><input type="checkbox"/> <span>Check-in/Out Card Hand Over and Documents</span>
+                                        (HR/Admin)</li>
+                                    <li><input type="checkbox"/> <span>Logins Deletion (IT)</span></li>
+                                    <li><input type="checkbox"/> <span>E-mail Backup (IT)</span></li>
+                                    <li><input type="checkbox"/> <span>Account Clearance Documentation (Finance &amp;
+                                        Accounts)</span></li>
+                                    <li><input type="checkbox"/> <span>Final Settlement (After 3 months of Last Month Drawn
+                                        Salary)</span></li>
+                                    <li><input type="checkbox"/> <span>Separation Notices</span></li>
+                                </ul>
+                            </div>
+<br/><br/><br/><br/>
+
+                            <div>
+                                <tr style="height:30px;">
+                                    <span>Employee Name: </span>
+                                    <t t-esc="o.name"/>
+                                </tr>
+                                <br/><br/>
+                                <tr style="height:30px;">
+                                    <span>Designation: </span>
+                                    <t t-esc="o.job_id.name"/>
+                                </tr>
+                                <br/><br/>
+                                <tr style="height:30px;">
+                                    <span>Joining Date: </span>
+                                    <t t-esc="o.joining_date"/>
+                                </tr>
+                                <br/><br/>
+                                <tr style="height:30px;">
+                                    <span>Last Working Date: </span>
+
+                                </tr>
+                            </div>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

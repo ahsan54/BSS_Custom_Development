@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="hr_employee_report_view" name="HR Employee report">
+      <t t-call="web.html_container">
+        <t t-call="web.basic_layout">
+          <t t-foreach="docs" t-as="o">
+            <div style="text-align:right; margin-top:-60px; ">
+              <img src="https://www.edds.com.pk/s/img/wp-content/uploads/2018/11/BSS.png" alt="Company Logo" class="header-image"/>
+            </div>
+
+            <div style="text-align: center;" class="row">
+              <h4>Employee Equipment Allocation Form</h4>
+            </div>
+
+            <br/>
+            <br/>
+
+            <table border="1" style="border-collapse: collapse;width:100%;font-size:16px">
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Name:</strong>
+                </td>
+                <td class="col-9" style="text-align:left;"/>
+              </tr>
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Category:</strong>
+                </td>
+                <td class="col-9" style="text-align:left;"/>
+              </tr>
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Created By:</strong>
+                </td>
+                <td class="col-9" style="text-align:left;"/>
+              </tr>
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Approved By:</strong>
+                </td>
+                <td class="col-6" style="text-align:left;padding-left: 10px;">
+                  <strong>Name: </strong>
+                  <br/>
+                  <br/>
+                  <strong>Title: </strong>
+                  <span style="margin-left: 350px;">
+                    <strong>Signature: </strong>
+                  </span>
+                </td>
+              </tr>
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Document number:</strong>
+                  <br/>
+                  <strong>Version</strong>
+                </td>
+                <td class="col-9" style="text-align:left;"/>
+              </tr>
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Date:</strong>
+                </td>
+                <td class="col-9" style="text-align:left;"/>
+              </tr>
+              <tr style="height:30px;">
+                <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                  <strong>Confidentiality Level:</strong>
+                </td>
+                <td class="col-9" style="text-align:left;"/>
+              </tr>
+            </table>
+
+            <div class="page-break" style="page-break-before: always;"/>
+
+            <br/>
+
+            <div style="text-align: center;" class="row">
+              <h4>Change History</h4>
+            </div>
+
+            <br/>
+            <br/>
+
+            <table border="1" style="width: 100%; border-collapse: collapse;font-size:16px">
+              <thead>
+                <tr style="height:30px;">
+                  <th style="padding-top: 10px;">Date</th>
+                  <th style="padding-top: 10px;">Version</th>
+                  <th style="padding-top: 10px;">Created by</th>
+                  <th style="padding-top: 10px;">Description of Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!--<tr t-foreach="records" t-as="record">-->
+                <tr style="height:30px;">
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                </tr>
+                <tr style="height:30px;">
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                </tr>
+                <tr style="height:30px;">
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                </tr>
+                <tr style="height:30px;">
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <div class="page-break" style="page-break-before: always;"/>
+
+
+            <div style="" class="row">
+              <h4 style="">
+                          Human Resource Department <br/>
+              <span>Business Solutions &amp; Services</span>
+            </h4>
+          </div>
+
+
+          <div style="text-align:center;" class="row">
+            <h4 style="text-decoration: underline; text-decoration-thickness: 3px;">EMPLOYEE JOINING FORM</h4>
+          </div>
+
+          <table border="1" style="border-collapse: collapse; width:100%; font-size:16px">
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px; padding-left: 10px;">
+                <strong>Name:</strong>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;">
+                <span t-esc="o.name"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Father Name:</strong>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;">
+                <span t-esc="o.father_name"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Correspondence Address:</strong>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;">
+                <span t-esc="o.address_home_id.street"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Permanent Address:</strong>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;">
+                <span t-esc="o.permanent_address"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Mobile: </strong>
+                <span t-esc="o.phone"/>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Email ID: </strong>
+                <span t-esc="o.private_email"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Date of Birth: </strong>
+                <span t-esc="o.birthday"/>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px;  text-align:left;">
+                <strong>Marital Status: </strong>
+                <span t-esc="o.marital"/>
+                <span style="margin-left: 150px;">
+                  <strong>CNIC: </strong>
+                  <span t-esc="o.identification_id"/>
+                </span>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Blood Group: </strong>
+                <span t-esc="o.blood_group"/>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;">
+                <strong>Education Level Latest and Year: </strong>
+                <span t-esc="o.certificate"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Emergency Contact Details:</strong>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;"/>
+            </tr>
+            <tr style="height:30px;">
+              <td class="col-3" style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Name: </strong>
+                <span t-esc="o.emergency_contact_new"/>
+              </td>
+              <td class="col-9" style="margin-bottom: 10px;padding-left: 10px; text-align:left;">
+                <strong>Relation: </strong>
+                <span t-esc="o.relation"/>
+                <span style="margin-left: 200px;">
+                  <strong>Contact No:</strong>
+                  <span t-esc="o.emergency_phone_new"/>
+                </span>
+              </td>
+            </tr>
+          </table>
+
+          <br/>
+
+          <table border="1" style="border-collapse: collapse; width:100%; font-size:16px">
+            <tr style="height:30px;">
+              <td style="text-align: center;">
+                <strong style="text-decoration: underline;">Joining Details</strong>
+              </td>
+            </tr>
+          </table>
+
+          <table border="1" style="border-collapse: collapse; width:100%; font-size:16px">
+            <tr style="height:30px;">
+              <td style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Joining Date: </strong>
+                <span t-esc="o.first_contract_date"/>
+              </td>
+              <td style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Position: </strong>
+                <span t-esc="o.job_id.name"/>
+              </td>
+            </tr>
+            <tr style="height:30px;">
+              <td style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Office Location: </strong>
+                <span t-esc="o.address_id.street"/>
+              </td>
+              <td style="margin-bottom: 10px;padding-left: 10px;">
+                <strong>Reporting to: </strong>
+                <span t-esc="o.parent_id.name"/>
+              </td>
+            </tr>
+          </table>
+
+          <br/>
+
+          <table border="1" style="border-collapse: collapse; width:100%; font-size:16px">
+            <tr style="height:30px;">
+              <td style="text-align: center;">
+                <strong style="text-decoration: underline;">FAMILY DETAILS</strong>
+              </td>
+            </tr>
+          </table>
+          <t t-set="sr_no" t-value="0"/>
+          <table border="1" style="border-collapse: collapse; width:100%; font-size:16px">
+            <thead>
+              <tr style="height:30px;">
+                <th style="padding-top: 10px;">S.No</th>
+                <th style="padding-top: 10px;">Name</th>
+                <th style="padding-top: 10px;">Relation</th>
+                <th style="padding-top: 10px;">Date of Birth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <t t-if="o.father_name">
+
+                <tr style="height:30px; text-align:center;">
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <t t-set="sr_no" t-value="sr_no + 1"/>
+                    <t t-esc="sr_no"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="o.father_name"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span>Father</span>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="o.father_dob"/>
+                  </td>
+                </tr>
+              </t>
+
+              <t t-if="o.mother_name">
+                <tr style="height:30px; text-align:center;">
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <t t-set="sr_no" t-value="sr_no + 1"/>
+                    <t t-esc="sr_no"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="o.mother_name"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span>Mother</span>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="o.mother_dob"/>
+                  </td>
+                </tr>
+              </t>
+
+              <t t-if="o.spouse_complete_name">
+                <tr style="height:30px; text-align:center;">
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <t t-set="sr_no" t-value="sr_no + 1"/>
+                    <t t-esc="sr_no"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="o.spouse_complete_name"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span>Spouse</span>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="o.spouse_birthdate"/>
+                  </td>
+                </tr>
+              </t>
+              <t t-foreach="o.children_ids" t-as="child">
+                <tr style="height:30px; text-align:center;">
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <t t-set="sr_no" t-value="sr_no + 1"/>
+                    <t t-esc="sr_no"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="child.child_name"/>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span>child</span>
+                  </td>
+                  <td style="margin-bottom: 10px;padding-left: 10px;">
+                    <span t-esc="child.child_dob"/>
+                  </td>
+                </tr>
+              </t>
+              <tr style="height:30px;">
+                <td style="margin-bottom: 10px;padding-left: 10px;"></td>
+                <td style="margin-bottom: 10px;padding-left: 10px;"/>
+                <td style="margin-bottom: 10px;padding-left: 10px;"/>
+                <td style="margin-bottom: 10px;padding-left: 10px;"/>
+              </tr>
+            </tbody>
+          </table>
+
+          <br/>
+          <div style="" class="row">
+
+            <h3 style="text-align:center; text-decoration: underline; text-decoration-thickness: 3px;">DECLARATION</h3>
+            <!--<p style="text-align:left; margin-left: -800px;">I hereby declare that the above statements made in my application form are true, complete and correct to the best of my knowledge and belief. In the event of any information being found false or incorrect at any stage, my services are liable to be terminated without notice.</p>-->
+
+          </div>
+          <div style="" class="row">
+
+            <!--<h3 style="text-align:center; text-decoration: underline; text-decoration-thickness: 3px;">DECLARATION</h3>-->
+            <p style="text-align:left;">I hereby declare that the above statements made in my application form are true, complete and correct to the best of my knowledge and belief. In the event of any information being found false or incorrect at any stage, my services are liable to be terminated without notice.</p>
+
+          </div>
+
+
+          <table border="1" style="border-collapse: collapse; width:100%; font-size:16px padding:20px;">
+            <tr style="height:80px;">
+              <td class="col-4" style="margin-bottom: 10px; padding-left: 10px; width:30%;">
+                <strong>Date:</strong>
+              </td>
+              <td class="col-4" style="margin-bottom: 10px; padding-left: 10px; width:30%;">
+                <strong>Name:</strong>
+              </td>
+              <td class="col-4" style="margin-bottom: 10px; padding-left: 10px; width:30%;">
+                <strong>Signature:</strong>
+              </td>
+            </tr>
+          </table>
+
+        </t>
+      </t>
+    </t>
+  </template>
+</data>
+</odoo>

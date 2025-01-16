@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="hr_employee_onboarding_report_view" name="HR Employee OnBoarding report">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div style="text-align:right; margin-top:-60px; ">
+                            <img
+                                src="https://www.edds.com.pk/s/img/wp-content/uploads/2018/11/BSS.png"
+                                alt="Company Logo" class="header-image" />
+                        </div>
+
+                        <div style="text-align: center;" class="row">
+                            <h4>Employee OnBoarding Report</h4>
+                        </div>
+
+                        <br />
+                        <br />
+
+
+                        <table class="table table-bordered" border="1"><thead>
+                                <tr style="height:30px;">
+                                    <th scope="col" style="padding-top: 10px;">Activity</th>
+                                    <th scope="col" style="padding-top: 10px;">Assigned</th>
+                                    <th scope="col" style="padding-top: 10px;">Due Date</th>
+                                    <th scope="col" style="padding-top: 10px;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.onboarding_report()" t-as="record">
+                                    <td t-esc="record['activity']"/>
+                                    <td t-esc="record['assigned_to']"/>
+                                    <td t-esc="record['due_date']"/>
+                                    <td t-esc="record['status']"/>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

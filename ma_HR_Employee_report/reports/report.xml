@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Invoice with commission Button-->
+    <record id="bss_reports_paper_format" model="report.paperformat">
+        <field name="name">European A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">28</field>
+        <field name="margin_bottom">15</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">26</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="hr_employee_report"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            string="Employee Joining Form"
+            name="ma_HR_Employee_report.hr_employee_report_view"
+            file="ma_HR_Employee_report.hr_employee_report_view"
+    />
+    <report
+            id="hr_employee_onboarding_report"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            string="Employee On Boarding Report"
+            name="ma_HR_Employee_report.hr_employee_onboarding_report_view"
+            file="ma_HR_Employee_report.hr_employee_onboarding_report_view"
+    />
+    <report
+            id="hr_employee_offboarding_report"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            string="Employee Off Boarding Report"
+            name="ma_HR_Employee_report.hr_employee_offboarding_report_view"
+            file="ma_HR_Employee_report.hr_employee_offboarding_report_view"
+    />
+    <report
+            id="hr_recruitment_offer_letter_btn"
+            model="hr.applicant"
+            report_type="qweb-pdf"
+            string="Candidate Offer Letter"
+            name="ma_HR_Employee_report.applicant_offer_letter"
+            file="ma_HR_Employee_report.applicant_offer_letter"
+            print_report_name="'Candidate Offer Letter-%s' % (object.name)"
+            paperformat="bss_reports_paper_format"/>
+    />
+
+    <report
+            id="hr_recruitment_internship_offer_letter_btn"
+            model="hr.applicant"
+            report_type="qweb-pdf"
+            string="Internship Offer Letter"
+            name="ma_HR_Employee_report.applicant_internship_offer_letter"
+            file="ma_HR_Employee_report.applicant_internship_offer_letter"
+            print_report_name="'Internship Offer Letter-%s' % (object.name)"
+            paperformat="bss_reports_paper_format"/>
+    />
+
+
+    <report
+            id="hr_non_disclosure_agreement_btn"
+            model="hr.employee"
+            report_type="qweb-pdf"
+            string="NON-DISCLOSURE AGREEMENT"
+            name="ma_HR_Employee_report.employee_non_disc_agreement_letter"
+            file="ma_HR_Employee_report.employee_non_disc_agreement_letter"
+            print_report_name="'NON-DISCLOSURE AGREEMENT-%s' % (object.name)"
+            paperformat="bss_reports_paper_format"/>
+    />
+
+
+</odoo>

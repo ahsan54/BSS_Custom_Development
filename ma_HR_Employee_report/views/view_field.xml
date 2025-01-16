@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Add shipment_type field in view -->
+    <record id="custom_hr_employee_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='emergency_phone_new']" position="before">
+                <field name="relation"/>
+            </xpath>
+            <xpath expr="//field[@name='birthday']" position="before">
+                <field name="blood_group"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="custom_hr_applicant_inherit" model="ir.ui.view">
+        <field name="name">hr.applicant.form.inherit</field>
+        <field name="model">hr.applicant</field>
+        <field name="inherit_id" ref="hr_recruitment.hr_applicant_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//h2" position="replace">
+                <h2 class="o_row">
+                    <label for="partner_name" class="oe_edit_only"/>
+                    <div style="display: flex; align-items: center;">
+                        <field name="applicant_gender_married_status" style="margin-right: 30px;" placeholder="e.g. MR/MISS"/>
+                        <field name="partner_name" placeholder="e.g. M.Bota"/>
+                    </div>
+                </h2>
+            </xpath>
+            <xpath expr="//field[@name='partner_mobile']" position="before">
+                <field name="applicant_cnic"/>
+                <field name="applicant_gender_married_status"/>
+                <field name="ref_no"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

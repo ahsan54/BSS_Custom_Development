@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="employee_non_disc_agreement_letter" name="NON-DISCLOSURE AGREEMENT">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="col text-center">
+                            <h4 style="text-decoration: underline; font-weight: bold">
+                                NON-DISCLOSURE AGREEMENT</h4>
+                        </div>
+
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>This agreement is made by and between:</p></li>
+                                <li><p>Business Solutions &amp; Services (BSS) is a registered firm incorporated under
+                                    the Laws
+                                    of Pakistan having a registered office at 25-B Valencia Town Lahore. (Hereinafter
+                                    called
+                                    the employer, which expression shall be deemed to include its successors and
+                                    assignee)
+                                    acting through Tanweer Ahmed Siddiqi, who is duly authorized on this behalf, of the
+                                    first part. </p></li>
+                                <li><p>AND</p></li>
+                                <li>
+                                    <p>
+                                        <strong>
+                                            <span t-if="o.gender == 'male'">Mr. <span t-esc="o.name"/></span>
+                                            <span t-if="o.gender == 'female'">
+                                                <t t-if="o.marital == 'married'">
+                                                    Mrs. <span t-esc="o.name"/>
+                                                </t>
+                                                <t t-if="o.marital == 'single' or o.marital == 'others'">
+                                                    Miss <span t-esc="o.name"/>
+                                                </t>
+                                            </span>
+                                            <span>
+                                                <t t-if="o.gender == 'male'">
+                                                    S/O <span t-esc="o.father_name"/>
+                                                </t>
+                                                <t t-if="o.gender == 'female'">
+                                                    D/O <span t-esc="o.father_name"/>
+                                                </t>
+                                            </span>
+                                        </strong>
+                                        having NIC No.
+                                        <strong><t t-esc="o.identification_id"/></strong>
+                                        (hereinafter called the employee) of the second part.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p><strong>WHEREAS</strong></p>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                            <ol type="1">
+                                <li><p>The Employer is engaged in the business of developing computer software &amp;
+                                    Solutions and associated IT support.</p></li>
+
+                                <li><p>The Employer wishes to engage the services of the Employee on terms and
+                                    conditions of employment as appears herein below.</p></li>
+                                <li><p>The Employee is willing as well on the terms and conditions appearing herein
+                                    below to seek employment with the employer.</p></li>
+                            </ol>
+                        </div>
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>NOW THEREFORE THIS AGREEMENT WITNESSES AS UNDER:</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>APPOINTMENT</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The Employee hereby offers, and the Employer accepts the services of the
+                                    Employee, on terms and conditions mentioned in the Letter of Appointment as well as
+                                    herein below and in the rules of the Employer as maybe framed time to time.</p></li>
+
+                            </ul>
+                        </div>
+                        <br/>
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>TERMS AND CONDITIONS OF EMPLOYMENT</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>1. Confidentiality:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The Employee shall not at any time during the continuance of his employment with
+                                    employer nor at the time after its termination howsoever arising, convey or
+                                    communicate to any person any of the “confidential information” concerning the
+                                    organization, business or affairs of the Employer or any of its associated companies
+                                    which come to his/her knowledge during his/her employment with the Employer and
+                                    he/she shall keep secret all confidential information entrusted to him/her and shall
+                                    not use or to attempt to use any such information.
+
+
+                                    Obligations of confidentiality in terms of this Employment shall continue,
+                                    notwithstanding expiry or termination of the Services (Employment) for a period of
+                                    Thirty-Six (36) months from the date of expiry or early termination of
+                                    Employment.</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>Confidential Information Defined:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The term confidential information, inter-alia, means the following clauses of
+                                    Information relating to the Employer’s business:</p></li>
+                            </ul>
+                        </div>
+                        <div class="page-break" style="page-break-before: always;"/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                            <ul>
+                                <li><p>Trade secrets and other proprietary and confidential information which are owned
+                                    by the Employer and which have to do with the operation of the Employer’s business
+                                    consisting, for example and not intending to be exhaustive, of its nature and types
+                                    of services rendered to such clients or proposed to be rendered to prospective
+                                    clients, fee charged or to be charged, proposals, inventions, methodologies,
+                                    algorithms, formulae, processes, compilation of information, form and content
+                                    databases, designs, drawings, models, equipment, result of research proposals, job
+                                    notes, reports, records, specifications, software, firmware and procedures used in
+                                    or related to the employer’s products: and</p></li>
+
+                                <li><p>The employer’s relations with its employees including without limitation
+                                    salaries, job classifications and Skill levels:</p></li>
+
+                                <li><p>Financial sales and marketing data compiled by the Employer as well as the
+                                    Employer’s financial, sales and marketing plans and strategies, customer lists and
+                                    non-public pricing:</p></li>
+
+
+                                <li><p>All ideas, concepts, information, and written material about a client
+                                    disclosed to the Employee by the
+                                    Employer or <strong>acquired from a client of the Employer.</strong></p></li>
+
+                                <li><p>Any other information designed by the Employer to be confidential, secret and/or
+                                    proprietary.</p></li>
+
+                                <li><p>NDA is part of mandatory contractual requirements for each employee.</p></li>
+
+                                <li><p>NDA is part of mandatory contractual requirements for each employee.</p></li>
+
+                            </ul>
+                        </div>
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>2. Discovery, Development, and Invention:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>Any discovery, development, invention, copyright, patent, design or improvement
+                                    of whatever kind, led or contributed to by the Employee during and in the course of
+                                    his employment with the Employer, whether on his own or jointly with others, shall
+                                    form the exclusive property of the Employer, and the Employee shall have no copy
+                                    right or other intellectual property right whatsoever in such discovery,
+                                    development, invention, copyright, patent, design or improvement, nor shall the
+                                    employee be entitled to use the same, except by the written consent of the
+                                    Employer.</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>3. Non-Competition:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The Employee shall not during his employment with the employer enter or engage,
+                                    directly or indirectly, with any business which competes with the business of the
+                                    Employer.
+
+                                    The Employee will not engage in any other business directly or in partnership or
+                                    become a director of another company or receive commission or any other compensation
+                                    in money or in kind for introducing business to any other person without the written
+                                    permission of the Employer. Such permission will not be withheld unreasonably, where
+                                    the other business does not interfere in any way with that of the Employer.
+
+
+                                    The employee shall not use the confidential information and trade secrets disclosed
+                                    to him or of which he may become aware during his employment with the employer to do
+                                    business on his own, or with anyone else’s business, at any time during or after the
+                                    termination of his employment, however caused, with the Employee.</p></li>
+                            </ul>
+                        </div>
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>4. Conflict of Interest:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The Employee certifies that he has no outstanding agreement or obligation that
+                                    conflicts with any of the provisions of this agreement that would preclude him from
+                                    complying with the provisions hereof and further certifies that he will not enter
+                                    into any such conflicting agreement with anyone during the term of this
+                                    agreement.</p></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>5. Declaration:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The Employer reserves the right to make any change in these terms of employment
+                                    or in the documents referred to herein by a written statement addressed to the
+                                    Employee.</p></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>6. Waivers:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>The waiver by the Employer of any breach of any provision of this agreement by
+                                    the other party shall not operate as or be construed as a waiver of any subsequent
+                                    breach by the other partly.</p></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>7. Construction:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>his agreement shall be construed under the laws of Pakistan</p></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>8. Penalty:</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                            <ul>
+                                <li><p>That in case of breach of any of the above-mentioned clauses during and after the
+                                    period of employment with Employer / BSS , the employee will be held accountable
+                                    according to the applicable laws and his/her employment shall be liable to be
+                                    terminated with immediate effect (if employed at the time) and a monetary penalty
+                                    may also be imposed and payable by the employee based upon the seriousness of the
+                                    breach. The </p></li>
+                                <li><p>monetary penalty would be determined by Employer/BSS in accordance with the terms
+                                    of service that would </p></li>
+                                <li><p>not exceed four times the current gross salary of the employee. In addition to
+                                    the above employer/BSS shall have the right to blacklist such employee at any or all
+                                    forums related to IT industry.</p></li>
+                                <li><p>Employee covenants that for a period of thirty-six months immediately following
+                                    the termination of employee relationship with the company for any reason, he shall
+                                    not either directly or indirectly solicit, induce, recruit or encourage any of the
+                                    company’s employees to leave their employment or take away such employees, or
+                                    attempt to solicit, induce, recruit, encourage or take away employees of the company
+                                    either for employees or for any other person.</p></li>
+                                <li><p>Employee undertake that during the term of employment or after the termination
+                                    of employment thirty-six months, he/she shall neither make any adverse
+                                    comments/remarks about BSS on any social media forum including but not limited to
+                                    FB, Linked In, Twitter, Instagram etc. Nor to BSS client in any form.
+                                </p></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div>
+                                <p>9. General Terms</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>Employee also covenants that he will not join company’s customers /clients
+                                    directly or indirectly for Thirty-Six months immediately following the termination
+                                    of employee relationship with the company/BSS for any reason. In case of violations
+                                    of this clause company/BSS will be entitled to and will have the full right to take
+                                    any legal action including but not limited to blacklisting the employee in IT
+                                    industry ETC. that company may deem fit and appropriate in the matter besides AND in
+                                    addition to taking any other legal action available under the law.
+
+                                    The unenforceability of any provision of this agreement shall not be construed to
+                                    nor shall it cause any other provision of this agreement to be unenforceable by
+                                    reason thereof. The term of this Agreement shall remain in full force and effect
+                                    during the employment tenure and for three (3) years after the termination of
+                                    “Employee &amp; Employer” relationship.
+
+                                    The Employee will not copy paste Company/Firms DATA into any personal storage device
+                                    (for example, flash drive, personal network folder on cloud or any removable device
+                                    that is not provided or approved by the company).
+
+                                    The Employee shall surrender the Company/Firm/Employer’s confidential information
+                                    before leaving the company/firm/employment and the employee shall not use any
+                                    information or knowledge about the company/firm that can harm company (BSS) business
+                                    in any manner whatsoever by any means.
+
+                                    All the assets including the one mentioned in this NDA/deed are strictly
+                                    BSS/Employer’s property. The employee shall not retain, sell or use any of this
+                                    information after leaving the company. It is a clear understanding between the
+                                    parties and clearly understood by the employee that any software product, module, or
+                                    code cannot be used or sold under any other name or platform without BSS written
+                                    consent.
+
+                                    These terms and conditions should not be shown to any person except by the
+                                    permission of the Employer.</p></li>
+                            </ul>
+                        </div>
+                        <div class="page-break" style="page-break-before: always;"/>
+                        <div class="" style="page-break-before: always;">
+                            <div class="row">
+                                <div class="col-4" style="text-align: center;">
+                                    <span><strong>Employee for BSS</strong></span>
+                                </div>
+                                <div class="col-4"></div>
+                                <div class="col-4" style="text-align: center;">
+                                    <span><strong>Employer/BSS</strong></span>
+                                </div>
+                            </div>
+                            <br/><br/><br/><br/><br/>
+                            <div class="row">
+                                <div class="col-4" style="text-align: center;">
+                                    <span>Name: <t t-esc="o.name"/></span>
+                                </div>
+                                <div class="col-4"></div>
+                                <div class="col-4" style="text-align: center;">
+                                    <span>Tanweer Ahmed Siddiqi</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" style="text-align: center;">
+                                    <span>CNIC: <t t-esc="o.identification_id"/></span>
+                                </div>
+                                <div class="col-4"></div>
+                                <div class="col-4" style="text-align: center;">
+                                    <span>CEO</span>
+                                </div>
+                            </div>
+                            <br/><br/><br/><br/>
+                            <div class="row">
+                                <div class="col-4" style="text-align: center;">
+                                    <span><strong>Witness 1:</strong></span>
+                                </div>
+                                <div class="col-4"></div>
+                                <div class="col-4" style="text-align: center;">
+                                    <span><strong>Witness 2:</strong></span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" style="text-align: center;">
+                                    <span>Name:</span>
+                                </div>
+                                <div class="col-4"></div>
+                                <div class="col-4" style="text-align: center;">
+                                    <span>Name:</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" style="text-align: center;">
+                                    <span>CNIC:</span>
+                                </div>
+                                <div class="col-4"></div>
+                                <div class="col-4" style="text-align: center;">
+                                    <span>CNIC:</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="applicant_offer_letter" name="Offer Letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.basic_layout">
+                    <br/>
+                    <div class="header">
+                        <div class="col-4">
+                            <img src="/ma_HR_Employee_report/static/src/img/images/header.png" alt="Company Logo"
+                                 class="header-image"/>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+                        <div class="col-6" style="font-weight: bold">
+                                <span><t t-esc="o.applicant_gender_married_status"/>. <t t-esc="o.partner_name"/></span>
+                            </div>
+
+                        <div class="offset-4 col-3" style="font-weight: bold">
+                            <span>Date: </span><t t-esc="o.get_current_month()"/>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-left: 20px; padding-right: 20px;">
+                            <div class="offset-10 col-3" style="font-weight: bold">
+                                <span><t t-esc="o.ref_no"/></span>
+                            </div>
+                        </div>
+
+                    <br/>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <div class="col-4" style="font-weight: bold">
+                            <span>Permanent Address:</span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <div class="col-4" style="font-weight: bold">
+                            <span>25 B Valancia Town</span>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <div class="col-4" style="font-weight: bold">
+                            <span>Lahore, Pakistan</span>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="col text-center">
+                        <p style="text-decoration: underline; font-size:24px">OFFER FOR EMPLOYMENT</p>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <div class="col-4" style="font-weight: bold">
+                            <p>Dear <t t-esc="o.partner_name"/>,</p>
+                            <br/>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <p>As a result of your interview with us, we are pleased to offer you employment at the
+                            following terms:</p>
+                        <br/>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <p>
+                            <span style="font-weight:bold">Job Title: </span><t t-esc="o.name"/>
+                        </p>
+                        <br/>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <p>
+                            <span style="font-weight:bold">Salary Breakdown</span>
+                        </p>
+                        <br/>
+                        <br/>
+                    </div>
+                    <t t-set="currency" t-value="env['res.currency'].search([('name', '=', 'PKR')], limit=1)"/>
+                    <div class="row" style="padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>Basic Salary</p>
+                        </div>
+
+                        <div class="offset-2 col-4">
+                            <p>
+                                <!-- <t t-set='amount' t-value='0.6*o.salary_proposed'/> -->
+                                <!-- Rs. <t t-esc="int(amount)"/>/Month -->
+                                <!-- Rs. <t t-esc="formatLang(0.6 * o.salary_proposed, currency_obj=o.company_id.currency_id)"/>/Month                                /Month -->
+                                Rs. <t t-esc="int(0.6*o.salary_proposed)"/>/Month
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>House Rent</p>
+                        </div>
+
+                        <div class="offset-2 col-4">
+                            <p>
+                                Rs. <t t-esc="int(0.2*o.salary_proposed)"/>/Month
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>Conveyance</p>
+                        </div>
+
+                        <div class="offset-2 col-4">
+                            <p>
+                                Rs. <t t-esc="int(0.1*o.salary_proposed)"/>/Month
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+
+                    <div class="row" style="padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>Utilities</p>
+                        </div>
+
+                        <div class="offset-2 col-4">
+                            <p>
+                                Rs. <t t-esc="int(0.05*o.salary_proposed)"/>/Month
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 70px; padding-right: 20px;">
+                        <div class="col-4">
+                            <p>Mobile Allowance</p>
+                        </div>
+
+                        <div class=" col-4">
+                            <p>
+                                Rs. <t t-esc="int(0.05*o.salary_proposed)"/>/Month
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="font-weight:bold; padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>Gross Salary</p>
+                        </div>
+
+                        <div class="offset-2 col-4">
+                            <p>
+                                Rs. <t t-esc="int(o.salary_proposed)"/>/Month
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+                    <br/>
+
+                    <div class="row" style="font-weight:bold; padding-left: 70px; padding-right: 50px;">
+                        <div class="col-2">
+                            <p>Probation Period</p>
+                        </div>
+
+                        <div class="offset-2 col-8" style="font-weight: normal">
+                            <p>
+                                Your probation period will be for 3 Months. After 3 Months, up to Rs. …/- may be added
+                                based on your performance. The benefits are applicable after the probationary period.
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <br/>
+
+                    <div class="row" style="font-weight:bold; padding-left: 70px; padding-right: 50px;">
+                        <div class="col-2">
+                            <p>Leaves</p>
+                        </div>
+
+                        <div class="offset-2 col-8" style="font-weight: bold">
+                            <p>
+                                Annual: <span style="font-weight: normal">14 Days     </span> Casual: <span
+                                    style="font-weight: normal">08 Days     </span> Sick: <span
+                                    style="font-weight: normal">07 Days</span>
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <br/>
+
+                    <div class="row" style="font-weight:bold; padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>Joining Date</p>
+                        </div>
+
+                        <div class="offset-2 col-2">
+                            <p>
+                                <t t-esc="o.get_joining_date()"/>
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+
+                    <br/>
+
+                    <div class="row" style="font-weight:bold; padding-left: 70px; padding-right: 20px;">
+                        <div class="col-2">
+                            <p>Job Location</p>
+                        </div>
+
+                        <div class="offset-2 col-2">
+                            <p>
+                                <t t-esc="o.get_job_location()"/>
+                            </p>
+                        </div>
+                        <br/>
+                    </div>
+<br/>
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <p>
+                            <span style="font-weight:bold">Terms &amp; Conditions</span>
+                        </p>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <ul>
+                            <li><p>Monthly Emolument will be subject to Tax Deduction as per prevailing Taxation Laws of
+                                Federal/Provincial Government of Pakistan. The payments will be made monthly in
+                                arrears. </p></li>
+                            <li><p>Employees will be entitled to end of service benefits (Gratuity/Provident Fund) in
+                                line with BSS HR policy.</p></li>
+                            <li><p>Health Insurance (IPD) will be provided by the company to employees, spouse &amp;
+                                kids, life insurance benefit for employee only, while sharing nominal costs with
+                                employees as per the company’s policy. </p></li>
+                            <li>
+                                <p>
+                                    Company can assign you any of the following working schedules/shift, based on its
+                                    client requirement:<br/>
+                                    <ul>
+                                        <li><p>1st Shift 9:00 Am-6:00 Pm</p></li>
+                                        <li><p>2nd Shift 1:00 Am-10:00 Pm</p></li>
+                                    </ul>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--<div class="page-break" style="page-break-before: always;"/>-->
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <ul>
+
+                            <li><p>You will be considered a permanent employee after successful completion of probation
+                                period, nevertheless the minimum binding/commitment to work with BSS shall be
+                                twenty-four months from the date of appointment. However, in case of unsatisfactory
+                                performance or professional misconduct and/or violation of any of the agreed terms and
+                                conditions of the appointment or for any other lawful reason not specifically stated
+                                herein during the service Employer can terminate employment without assigning of any
+                                reason or one month salary in lieu thereof. Besides taking any or all other legal
+                                action(s)/ remedy(ies) available to the Company under the law.</p></li>
+                            <li><p>You will discharge all duties and responsibilities assigned by Business Solutions
+                                &amp; Services with utmost efficiency and diligence.</p></li>
+                            <li><p>You will not act in any manner contrary to the interest of Business Solutions &amp;
+                                Services.</p></li>
+                            <li><p>During your employment or after conclusion thereof you will not disclose any
+                                information related to Business Solutions &amp; Services or its clients and shall not
+                                divulge any of its affairs or secrets that you may obtain while in service.</p></li>
+                            <li><p>During the terms of employment, you shall not disclose your package details to anyone
+                                within the organization, failure may lead to strict disciplinary action as deem fit in
+                                the case.</p></li>
+                            <li><p>The company will rigorously use all legal means in its powers to seek remedy due to
+                                any damage, tangible or intangible, suffered by it due to the breach of, integrity,
+                                ethics, loyalty, and trust.</p></li>
+                            <li><p>You will be responsible for the safekeeping and return, in good condition and order,
+                                of all the company’s property, which may be in your use, custody or charge. The company
+                                shall have the right to deduct the money value of all such things from your dues and
+                                take any other action, as the company deems proper in the event of your failure to
+                                account for such property to the company’s satisfaction.</p></li>
+                            <li><p>You will not, without the company’s prior written permission, carry on any similar
+                                competing business, or enter, for any part of your time, in any capacity, the services
+                                of, or be employed by, any other firm, company or person during your employment with
+                                BSS.</p></li>
+                            <li><p>You will not accept any other employment, whether part time or otherwise with any
+                                other institution or person during your employment with Business Solutions &amp;
+                                Services.</p></li>
+                            <li><p>During your service you will be governed by the terms of this offer of employment and
+                                the relevant rules/regulation and policies of Business Solutions &amp; Services as
+                                described in BSS HR Manual and any policies which may be applicable from time to
+                                time.</p></li>
+                            <li><p>By signing this offer letter, you are denoting your acceptance and acknowledgment of
+                                the above-mentioned term &amp; conditions.</p></li>
+                        </ul>
+                    </div>
+<br/>
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <p>
+                            <span style="font-weight:bold; text-decoration:underline">Declaration:</span>
+                        </p>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <ul>
+                            <li><p>I hereby acknowledge and agree that being a permanent employee I will serve Business
+                                Solutions &amp; Services for a minimum period of twenty-four months from the date of
+                                joining. I shall remain faithful with the company i.e., the afore-named “Employer/BSS”
+                                and shall endeavor best services. I also agree with my employer/BSS that in case of
+                                breach of any terms and conditions of my employment, in addition to legal remedies
+                                available to the employer/BSS against me I shall also be liable to pay an amount equals
+                                to two gross salaries payable at that time as a penalty as well as BSS shall be fully
+                                authorized to hold the Gratuity/Provident fund and not release any personal documents
+                                (including clearance letter, experience certificate etc.) to me. </p></li>
+                            <li><p>I declare and promise that while employed by the Company/BSS, I agreed to work on
+                                full-time basis exclusively for the company/BSS and agree that I shall not, during
+                                employment of the Company/BSS, be employed or engaged in any capacity, in promoting,
+                                undertaking or carrying on any other business that competes with the Company/BSS or
+                                interferes or could reasonably interfere with my duties to the Company/BSS without our
+                                prior written permission of the Employer.</p></li>
+                            <li><p>Further, I also declare and covenant that for a period of thirty six months
+                                immediately following the termination of employment relationship with the company for
+                                any reason, I shall not either directly or indirectly solicit, induce, recruit or
+                                encourage any of the company’s employees to leave their employment or take away such
+                                employees for employment with any other person or entity and also shall not indulge in
+                                any sort of social media (online mention) of the company for the thirty six months
+                                immediately following the termination of employee relationship with the company for any
+                                reason.</p></li>
+                            <li><p>Employee also covenants that he will not join company’s customers /clients directly
+                                or indirectly for thirty-six months immediately following the termination of employee
+                                relationship with the company for any reason. In the event of violations of this clause
+                                the company has the full right to take any legal action including blacklisting etc. that
+                                the company may deem fit and appropriate in the matter on a case-to-case basis.</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <p>
+                            <span style="font-weight:bold; text-decoration:underline">CONFIDENTIALITY</span>
+                        </p>
+                        <br/>
+                    </div>
+
+                    <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                        <ul>
+                            <li><p>I undertake that I shall not release or disclose any information related to BSS or
+                                its Client to any other person except Employer’s/BSS’s authorized person on a
+                                need-to-know basis</p></li>
+                            <li><p>Obligations of confidentiality in terms of this Employment shall continue,
+                                notwithstanding expiry or termination of the Services (Employment) for a period of
+                                thirty-six (36) months from the date of expiry or early termination of
+                                Employment.</p></li>
+                        </ul>
+                    </div>
+
+                    <div class="page-break" style="page-break-before: always;"/>
+
+                        <div style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                We look forward to welcoming you as a valuable member of <strong><t
+                                    t-esc="res_company.name"/>!</strong>
+                                <br/>
+                                <br/>
+                                Regards,
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        <div style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                <div style="border-bottom: 1px solid #000;" class="col-4"/>
+                                <br/>
+                                <span style="font-weight:bold">Human Resources – BSS</span>
+                                <br/>
+                            </p>
+                            <br/>
+                        </div>
+
+                        <div style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                I hereby accept the above-mentioned terms and conditions for employment with <span
+                                    style="font-weight: bold"><t t-esc="res_company.name"/>.</span>
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                        <!--<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"/>-->
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div style="border-bottom: 1px solid #000;" class="col-4"/>
+                            <div class="col-1"/>
+                            <div class="offset-2 col-1">
+                                <p style="font-weight:bold">Date:</p>
+                            </div>
+                            <div style="border-bottom: 1px solid #000;" class="col-4">
+                            </div>
+                        </div>
+                        <br/>
+
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">Name:</span>
+                                <span style="border-bottom: 1px solid #000;" class="col-4">
+                                    <t t-esc="o.partner_name"/>
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">
+                                    <t t-if="o.applicant_gender_married_status == 'Mrs'">
+                                        Husband: ___________________
+                                    </t>
+                                    <t t-if="o.applicant_gender_married_status != 'Mrs'">
+                                        Father: ___________________
+                                    </t>
+                                </span>
+
+
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">C.N.I.C:</span>
+                                <span style="border-bottom: 1px solid #000;" class="col-4">
+                                    <t t-esc="o.applicant_cnic"/>
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">Contacts:</span>
+                                <span style="border-bottom: 1px solid #000;" class="col-4">
+                                    <t t-esc="o.partner_mobile or o.partner_phone"/>
+                                </span>
+                            </div>
+                        </div>
+
+
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

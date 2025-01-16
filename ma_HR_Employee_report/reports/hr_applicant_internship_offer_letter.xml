@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="applicant_internship_offer_letter" name="internship Offer Letter">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row" style="padding-left: 20px; padding-right: 20px;">
+                            <div class="col-6" style="font-weight: bold">
+                                <span><t t-esc="o.applicant_gender_married_status"/>. <t t-esc="o.partner_name"/></span>
+                            </div>
+
+                            <div class="offset-4 col-3" style="font-weight: bold">
+                                <span>Date: </span><t t-esc="o.get_current_month()"/>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-left: 20px; padding-right: 20px;">
+                            <div class="offset-10 col-3" style="font-weight: bold">
+                                <span><t t-esc="o.ref_no"/></span>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-4" style="font-weight: bold">
+                                <span>Permanent Address:</span>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-4" style="font-weight: lighter">
+                                <span> B Valancia Town</span>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-4" style="font-weight: lighter">
+                                <span>Lahore, Pakistan</span>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="col text-center">
+                            <p style="text-decoration: underline; font-size:24px; font-weight: bold">OFFER FOR
+                                INTERNSHIP</p>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-4" style="font-weight: bold">
+                                <p>Dear <t t-esc="o.partner_name"/>,</p>
+                                <br/>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <p>We are pleased to offer you an internship at the following terms:</p>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                <span style="font-weight:bold">Job Title: </span><t t-esc="o.name"/>
+                            </p>
+                            <br/>
+                            <br/>
+                        </div>
+
+
+                            <table class="table-sm table-borderless" style="border:0px;">
+                                <tr style="border:0px;">
+                                    <td class="col-2" style="width: 7%; border:0px; background-color: white;">
+                                        <span style="font-weight:bold">Internship Stipend:</span>
+                                    </td>
+
+                                    <t t-set="currency"
+                                       t-value="env['res.currency'].search([('name', '=', 'PKR')], limit=1)"/>
+
+                                    <td class="col-5" style="border:0px; background-color: white;">
+                                        <span>Rs. <t t-esc="o.salary_proposed"/>/Month (Permanent job may be offered
+                                            upon
+                                            successful
+                                            completion of internship based on performance)</span>
+                                    </td>
+
+                                </tr>
+                                <tr style="border:0px;">
+                                    <th style="text-align: left;" class="col-2">
+                                        Internship Location:
+                                    </th>
+                                    <td style="border:0px; background-color: white;">
+                                        <t t-esc="o.get_job_location()"/>
+                                    </td>
+                                </tr>
+                                <tr style="border:0px;">
+                                    <th style="text-align: left;">
+                                        Joining Date:
+                                    </th>
+                                    <td style="border:0px; background-color: white;">
+                                    </td>
+                                </tr>
+                            </table>
+
+                        <br/>
+
+                        <!--                    <div class="row" style="padding-left: 23px; padding-right: 20px;">-->
+                        <!--                        <span style="font-weight: bold;">Internship Location: </span> <span><t-->
+                        <!--                            t-esc="o.get_job_location()"/></span>-->
+                        <!--                    </div>-->
+
+                        <!--                    <div class="row" style="padding-left: 23px; padding-right: 20px; font-weight: bold">-->
+                        <!--                        <span>Joining Date: </span>-->
+                        <!--                    </div>-->
+
+
+                        <br/>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                            <ul>
+                                <li><p>Your service would be based on three months. However, in case of unsatisfactory
+                                    performance or professional misconduct and/or violation of any of the agreed terms
+                                    and
+                                    conditions of the appointment or for any other lawful reason not specifically stated
+                                    herein during the service, employer can terminate services. </p>
+                                </li>
+                                <li><p>You will discharge all duties and responsibilities assigned by Business Solutions
+                                    &amp; Services with utmost efficiency and diligence.
+                                </p>
+                                </li>
+                                <li><p>You will not act in any manner contrary to the interest of Business Solutions
+                                    &amp;
+                                    Services. </p></li>
+                                <li><p>
+                                    During your internship or after conclusion thereof you will not disclose any
+                                    information related to Business Solutions &amp; Services or its clients and shall
+                                    not
+                                    divulge any of its affairs or secrets that you may obtain while in service.</p>
+                                </li>
+
+
+                                <li><p>During the terms of internship, you shall not disclose your package details to
+                                    anyone
+                                    within the organization, failure may lead to strict disciplinary action as deem fit
+                                    in
+                                    the case.
+                                </p></li>
+
+                                <li><p>The company will rigorously use all legal means in its powers to seek remedy due
+                                    to
+                                    any damage, tangible, or intangible, suffered by it due to the breach of, integrity,
+                                    ethics, loyalty, and trust.  
+                                </p></li>
+
+                                <li><p>You will be responsible for the safekeeping and return in good condition and
+                                    order,
+                                    of all the company’s property, which may be in your use, custody, or charge. The
+                                    company
+                                    shall have the right to deduct the money value of all such things from your dues and
+                                    take any other action, as the company deems proper in the event of your failure to
+                                    account for such property to the company’s satisfaction.
+                                </p></li>
+
+
+                                <li><p>You will not, without the company’s prior written permission, carry on any
+                                    similar
+                                    competing business, or enter, for any part of your time, in any capacity, the
+                                    services
+                                    of, or be employed by, any other firm, company or person during your assignment with
+                                    BSS.
+                                </p></li>
+
+                                <li><p>You will not accept any other internship whether part time or otherwise with any
+                                    other institution or person during your service with Business Solutions &amp;
+                                    Services.
+                                </p></li>
+
+                                <li><p>During your service you will be governed by the terms of this offer of internship
+                                    and
+                                    the relevant rules and regulation of the Business Solutions &amp; Services as may be
+                                    applicable from time to time
+                                </p></li>
+
+
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div class="col-2">
+                                <p>Declaration</p>
+                            </div>
+                        </div>
+                        <br/>
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px; text-align: justify;">
+                            <ul>
+                                <li><p>I declare and promise that while employed by the Company/BSS, I agreed to work on
+                                    full-time basis exclusively for the company/BSS and agree that I shall not, during
+                                    internship of the Company/BSS, be employed or engaged in any capacity, in promoting,
+                                    undertaking or carrying on any other business that competes with the Company/BSS or
+                                    interferes or could reasonably interfere with my duties to the Company/BSS without
+                                    prior
+                                    written permission of the Employer. </p>
+                                </li>
+                                <li><p>Further, I also declare and covenant that for a period of thirty six months
+                                    immediately following the termination of internship relationship with the company
+                                    for
+                                    any reason, I shall not either directly or indirectly solicit, induce, recruit or
+                                    encourage any of the company’s employees to leave their internship or take away such
+                                    employees for internship with any other person or entity and also shall not indulge
+                                    in
+                                    any sort of social media (online mention) of the company for the thirty six months
+                                    immediately following the termination of employee relationship with the company for
+                                    any
+                                    reason.
+                                </p>
+                                </li>
+                                <li><p>Employee also covenants that he will not join company’s customers /clients
+                                    directly or indirectly for thirty-six months immediately following the termination
+                                    of
+                                    employee relationship with the company for any reason. In the event of violations of
+                                    this clause company have the full right to take any legal action including
+                                    blacklisting
+                                    etc. that company may deem fit and appropriate in the matter on case-to-case basis.
+                                </p></li>
+                            </ul>
+                        </div>
+
+
+                        <div class="row" style="font-weight:bold;">
+                            <div class="col-2">
+                                <p>Confidentiality</p>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style=" text-align: justify;">
+                            <ul style="list-style:none;">
+                                <li><p>I undertake that I shall not release or disclose any information related to BSS
+                                    or
+                                    its Client to any other person except Employer’s/BSS’s authorized person on a
+                                    need-to-know basis.
+                                    Obligations of confidentiality in terms of this Internship shall continue,
+                                    notwithstanding expiry or termination of the Services (Internship) for a period of
+                                    thirty-six (36) months from the date of expiry or early termination of Internship.
+                                </p>
+                                </li>
+                                <li><p>While employed by the Company, you agreed to work on full-time basis exclusively
+                                    for
+                                    the company and agree that you shall not, while you are employed by the Company, be
+                                    employed or engaged in any capacity, in promoting, undertaking or carrying on any
+                                    other
+                                    business that competes with the Company or interferes or could reasonably interfere
+                                    with
+                                    your duties to the Company without prior written permission.
+                                </p>
+                                </li>
+                            </ul>
+                        </div>
+
+
+                        <div class="page-break" style="page-break-before: always;"/>
+
+                        <div style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                We look forward to welcoming you as a valuable member of <strong><t
+                                    t-esc="res_company.name"/>!</strong>
+                                <br/>
+                                <br/>
+                                Regards,
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+
+                        <div style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                <div style="border-bottom: 1px solid #000;" class="col-4"/>
+                                <br/>
+                                <span style="font-weight:bold">Human Resources – BSS</span>
+                                <br/>
+                            </p>
+                            <br/>
+                        </div>
+
+                        <div style="padding-left: 23px; padding-right: 20px;">
+                            <p>
+                                I hereby accept the above-mentioned terms and conditions for employment with <span
+                                    style="font-weight: bold"><t t-esc="res_company.name"/>.</span>
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+                        </div>
+                        <!--<div style="border-top: 1px solid #000; width: 100%; margin: 10px 0;"/>-->
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div style="border-bottom: 1px solid #000;" class="col-4"/>
+                            <div class="col-1"/>
+                            <div class="offset-2 col-1">
+                                <p style="font-weight:bold">Date:</p>
+                            </div>
+                            <div style="border-bottom: 1px solid #000;" class="col-4">
+                            </div>
+                        </div>
+                        <br/>
+
+
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">Name:</span>
+                                <span style="border-bottom: 1px solid #000;" class="col-4">
+                                    <t t-esc="o.partner_name"/>
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">
+                                    <t t-if="o.applicant_gender_married_status == 'Mrs'">
+                                        Husband: ___________________
+                                    </t>
+                                    <t t-if="o.applicant_gender_married_status != 'Mrs'">
+                                        Father: ___________________
+                                    </t>
+                                </span>
+
+
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">C.N.I.C:</span>
+                                <span style="border-bottom: 1px solid #000;" class="col-4">
+                                    <t t-esc="o.applicant_cnic"/>
+                                </span>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row" style="padding-left: 23px; padding-right: 20px;">
+                            <div class="col-12">
+                                <span style="font-weight:bold;">Contacts:</span>
+                                <span style="border-bottom: 1px solid #000;" class="col-4">
+                                    <t t-esc="o.partner_mobile or o.partner_phone"/>
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>
