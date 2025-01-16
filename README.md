@@ -25,13 +25,19 @@ Ensured that the Meezan and MCB sequences operate independently of each other, p
 
 # Accounting_Customization
 Removed the working of approvals related to amount ranges and developed this module to handle approvals section.
+
 Extended the account.payment model to include a custom approval workflow with new states: submit_approval, approval_one, approval_two, posted, and cancel.
 Overrided  state field to manage payment approvals at different stages.
-Implemented the following methods:
-action_submit_for_approval: Moves the payment to the "Submitted for Approval" state and schedules an activity for a specific user with a deadline and approval reminder.
-action_approval_1 and action_approval_2: Transition payments to their respective approval levels.
-Overrode action_post, action_cancel, and action_draft methods to update the custom state field while maintaining core functionality.
+
+#### Implemented the following methods:
+##### action_submit_for_approval: Moves the payment to the "Submitted for Approval" state and schedules an activity for a specific user with a deadline and approval reminder.
+
+##### action_approval_1 and action_approval_2: Transition payments to their respective approval levels.
+
+##### Overrode action_post, action_cancel, and action_draft methods to update the custom state field while maintaining core functionality.
+
 Enhanced the approval process by integrating scheduled activities and user notifications to ensure timely action on payments.
+
 
 
 # Account_Settings_Inherited
@@ -44,11 +50,11 @@ The field allows users to configure a default journal for payments with a domain
 This configuration is stored as a parameter and can be dynamically accessed.
 Overridden default_get in account.payment:
 
-#### Implemented logic to fetch the configured default journal (payment_default_journal) from settings and pre-fill it in the Journal field of payments.
+##### Implemented logic to fetch the configured default journal (payment_default_journal) from settings and pre-fill it in the Journal field of payments.
 Ensured the default behavior is preserved for scenarios where no default journal is configured or the selected journal becomes invalid.
 Modified Journal Behavior in Vendor Bills (account.move):
 
-#### Overridden the journal_id field in the account.move model to:
+##### Overridden the journal_id field in the account.move model to:
 Compute a default journal specific to vendor bills (move_type = in_invoice) based on journals of type purchase.
 Display the last created purchase journal for vendor bills, while retaining default behavior for other move types and pages.
 This module provides flexibility by allowing admins to define a default payment journal while ensuring seamless functionality across different accounting workflows.
@@ -74,8 +80,16 @@ This module provides flexibility by allowing admins to define a default payment 
 # Ma_HR-Employee_Pdf_Reports
 
 # Sh_Portal_DashBoard
-Enhanced Leave Request Portal: Added functionality for employees to request full-day or half-day leaves through the portal. Validates allocated leave types, handles unpaid leaves, and calculates leave durations dynamically.
-Payslip Portal: Implemented a feature to display the latest three payslips for the logged-in employee with details, ensuring a user-friendly payslip overview.
-Tax Certificate Request: Developed tax certificate request flow, allowing employees to request tax certificates directly from their payslips. This updates the payslip record and generates an approval request to account office user for further processing.
-Loan Details View: Designed a detailed loan view for employees to track their loan payment schedules and statuses, ensuring transparency and accessibility.
-Validation and Security: Incorporated proper validation, error handling, and security measures for user-related operations across the portal features.
+#### Enhanced Leave Request Portal: 
+Added functionality for employees to request full-day or half-day leaves through the portal. Validates allocated leave types, handles unpaid leaves, and calculates leave durations dynamically.
+
+#### Payslip Portal: 
+Implemented a feature to display the latest three payslips for the logged-in employee with details, ensuring a user-friendly payslip overview.
+
+#### Tax Certificate Request: 
+Developed tax certificate request flow, allowing employees to request tax certificates directly from their payslips. This updates the payslip record and generates an approval request to account office user for further processing.
+#### Loan Details View: 
+Designed a detailed loan view for employees to track their loan payment schedules and statuses, ensuring transparency and accessibility.
+
+#### Validation and Security: 
+Incorporated proper validation, error handling, and security measures for user-related operations across the portal features.
