@@ -35,8 +35,23 @@ Enhanced the approval process by integrating scheduled activities and user notif
 
 
 # Account_Settings_Inherited
+#### Added Default Journal Configuration for Payments and Vendor Bills
+Developed the module from scratch to enhance default journal behavior in the Accounting module.
 
+Added a new payment_default_journal field (Many2one) in res.config.settings.
 
+The field allows users to configure a default journal for payments with a domain restricted to journals of type bank and cash.
+This configuration is stored as a parameter and can be dynamically accessed.
+Overridden default_get in account.payment:
+
+Implemented logic to fetch the configured default journal (payment_default_journal) from settings and pre-fill it in the Journal field of payments.
+Ensured the default behavior is preserved for scenarios where no default journal is configured or the selected journal becomes invalid.
+Modified Journal Behavior in Vendor Bills (account.move):
+
+Overridden the journal_id field in the account.move model to:
+Compute a default journal specific to vendor bills (move_type = in_invoice) based on journals of type purchase.
+Display the last created purchase journal for vendor bills, while retaining default behavior for other move types and pages.
+This module provides flexibility by allowing admins to define a default payment journal while ensuring seamless functionality across different accounting workflows.
 
 
 
