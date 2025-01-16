@@ -84,6 +84,9 @@ Cash Payment/Receipt Vouchers for cash transactions.
 
 Bank Payment/Receipt Vouchers for bank transactions.
 
+Payment Voucher, Journal Entries.
+
+
 #### Key Enhancements:
 Dynamically displays partner names, voucher numbers, and dates.
 
