@@ -1,0 +1,11 @@
+<odoo>
+    <report
+            id="report_salary_register_xls"
+            model="hr.payslip.run"
+            report_type="xlsx"
+            string="Salary Register"
+            name="salary_register_report.salary_register_xls_report"
+            file="salary_register_report.salary_register_xls_report"
+            menu="False"
+    />
+</odoo>
