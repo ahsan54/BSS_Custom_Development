@@ -86,6 +86,8 @@ Bank Payment/Receipt Vouchers for bank transactions.
 
 Payment Voucher, Journal Entries Report. 
 
+Bss Customer Invoice $ 
+
 
 #### Key Enhancements:
 Dynamically displays partner names, voucher numbers, and dates.
@@ -100,7 +102,7 @@ Includes formatted remarks and approval signatures.
 
 Backend extensions include get_amount_in_words() for text conversion, dynamic report titles via print_report_name, and analytic distribution formatting for clear account allocations. This ensures clarity and flexibility across diverse payment scenarios.
 
-
+Developed BSS_$_Invoice report  for customer invoices, featuring detailed  dynamic calculations for discounted prices, total amounts, and currency conversions (USD to PKR). 
 
 
 
