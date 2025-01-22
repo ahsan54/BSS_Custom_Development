@@ -1,0 +1,49 @@
+<odoo>
+    <record id="view_account_payment_wht_form_inherit" model="ir.ui.view">
+        <field name="name">view.account.payment.form.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="is_wht" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                <field name="tax_id"
+                       attrs="{
+                   'invisible': [('is_wht', '=', False)],
+                   'required': [('is_wht', '=', True)],
+                   'readonly': [('state', '!=', 'draft')]
+               }"
+                       options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"
+                       domain="[('id','in', tax_ids)]"/>
+                <field name="tax_ids" invisible="1"/>
+                <field name="tax_account_id" invisible="1"/>
+                <field name="tax_rate" invisible="1"/>
+                <field name="amount_outstanding"
+                       attrs="{
+                   'readonly': [('state', '!=', 'draft')],
+                   'invisible': [('is_wht', '=', False)],
+                   'required': [('is_wht', '=', True)]
+               }"/>
+                <field name="tax_amount"
+                       attrs="{
+                   'readonly': [('state', '!=', 'draft')],
+                   'invisible': [('is_wht', '=', False)],
+                   'required': [('is_wht', '=', True)]
+               }"/>
+                <field name="new_amount" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='destination_journal_id']" position="after">
+                <field name="wht_move_id" attrs="{'invisible': [('is_wht', '=', False)]}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='amount']" position="attributes">
+                <attribute name="attrs">{'readonly': [('is_wht', '=', True), ('state', '=', 'posted')]}</attribute>
+            </xpath>
+
+        </field>
+
+
+    </record>
+
+</odoo>
+

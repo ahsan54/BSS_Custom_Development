@@ -1,0 +1,38 @@
+<odoo>
+
+    <record id="view_account_payment_register_form_inherit" model="ir.ui.view">
+        <field name="name">view.account.payment.register.form.inherit</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='communication']" position="after">
+                <field name="is_wht"/>
+                <field name="tax_ids" attrs="{'invisible': [True]}"/>
+                <field name="tax_id"
+                       attrs="{'invisible': [('is_wht', '=', False)], 'required': [('is_wht', '=', True)]}"
+                       options="{'no_quick_create': True, 'no_create': True, 'no_open': True}"
+                       domain="[('id', 'in', tax_ids)]"/>
+                <field name="tax_account_id" attrs="{'invisible': [True]}"/>
+                <field name="tax_rate" attrs="{'invisible': [True]}"/>
+                <field name="amount_outstanding"
+                       attrs="{'invisible': [('is_wht', '=', False)], 'required': [('is_wht', '=', True)]}"/>
+                <field name="tax_amount"
+                       attrs="{'invisible': [('is_wht', '=', False)], 'required': [('is_wht', '=', True)]}"/>
+                <!-- Uncomment if needed -->
+                <!--
+                <field name="wht_journal_id"
+                       attrs="{'invisible': [('is_wht', '=', False)], 'required': [('is_wht', '=', True)]}"/>
+                -->
+                <field name="new_amount" attrs="{'invisible': [True]}"/>
+            </xpath>
+
+
+            <xpath expr="//field[@name='amount']" position="attributes">
+                <attribute name="attrs">{'readonly': [('is_wht', '=', True)]}</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
+

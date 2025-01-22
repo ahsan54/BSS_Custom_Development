@@ -1,0 +1,21 @@
+<odoo>
+    <record id="view_account_settings_res_config_settings_form_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-key='account']" position="inside">
+                <h2 style="background-color:#e1e3e6; padding-left:30px">Withholding Journal</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box" title="Withholding Journal">
+                        <div class="o_setting_right_pane">
+                            <group string="Withholding Journal">
+                                <field name="wht_journal_id"/>
+                            </group>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
