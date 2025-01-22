@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2015 DevIntelle Consulting Service Pvt.Ltd (<http://www.devintellecs.com>).
+
+For Module Support : devintelle@gmail.com  or Skype : devintelle 
+ -->
+<odoo>
+    <record id="cheque_no_tijaarat_cheques" model="ir.sequence">
+        <field name="name">Tijaarat Cheque Number</field>
+        <field name="code">tijaarat.voucher.cheque</field>
+        <field name="padding">10</field>
+    </record>
+
+
+    <record id="sequence_meezan_bank_cheque" model="ir.sequence">
+        <field name="name">Meezan Bank Sequence Number</field>
+        <field name="code">meezan.bank.sequence</field>
+        <field name="padding">10</field>
+    </record>
+
+
+    <record id="view_account_cheque_formate_form" model="ir.ui.view">
+        <field name="name">account.voucher.formate.form.view</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//field[@name='communication']" position="after">-->
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="payment_method_name" attrs="{'invisible': True}"/>
+                <field name="journal_type" attrs="{'invisible': True}"/>
+                <!--                <field name="cheque_formate_id" invisible="journal_type != 'bank'"/>-->
+                <field name="is_ac_pay" attrs="{'invisible': [('journal_type', '!=', 'bank')]}"/>
+                <field name="custom_partner_title" attrs="{'invisible': [('journal_type', '!=', 'bank')]}"/>
+                <!--                <field name="partner_text" invisible="payment_method_name != 'Checks' or not custom_partner_title" required="custom_partner_title"/>-->
+                <field name="partner_text"
+                       attrs="{'invisible': [('custom_partner_title', '=', False)],
+                               'required': [('custom_partner_title', '=', True)]}"/>
+                <field name="cheque_no" attrs="{'invisible': [('journal_type', '!=', 'bank')], 'required': [('journal_type', '==', 'bank')]}" force_save="1"/>
+                <!--                <field name="text_free" invisible="journal_type != 'bank'"/>-->
+            </xpath>
+        </field>
+    </record>
+</odoo>
