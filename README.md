@@ -132,6 +132,11 @@ Banking Information: Includes a separate sheet showing net salary and bank accou
 Developed the internship_offer_letter report , employee_offer_letter report , non_discloure report , employee_off_boarding report.
 
 
+# Vlc_Wht_Payments : WithHolding Tax
+
+
+
+
 
 
 
