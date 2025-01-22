@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_bss_customer_invoice_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4" style="text-align: start;">
+                                <h2>INVOICE</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-8"></div>
+                            <div class="col-4" style="text-align: left;">
+                                <!--                                <strong>INVOICE</strong>-->
+                                <table class="table table-sm table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: start;">
+                                                <strong>Invoice Date</strong>
+                                            </th>
+                                            <th style="text-align: end;">
+                                                <span><t t-esc="o.invoice_date"/></span>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: start;">
+                                                <strong>Invoice No</strong>
+                                            </th>
+                                            <th style="text-align: end;">
+                                                <span><t t-esc="o.name"/></span>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th style="text-align: start;">
+                                                <strong>Agreement Date</strong>
+                                            </th>
+                                            <th style="text-align: end;">
+                                                <span></span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <!-- Client Information -->
+                        <strong>To:</strong>
+                        <br/>
+                        <!-- Using the Contact Widget to Display Information -->
+                        <span t-field="o.partner_id"
+                              t-options='{"widget": "contact", "fields": ["address", "name", "phone", "vat"], "no_marker": True, "phone_icons": True}'
+                              name="invoice_to_customer"/>
+                        <br/>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr style="text-align: center;">
+                                    <th style="width: 50px;">No.</th>
+                                    <th style="width: 300px;">Service Description</th> <!-- Wider column -->
+                                    <th style="width: 100px;">Quantity</th> <!-- Equal width for Quantity -->
+                                    <th style="width: 100px;">Discounted Unit Price (US$)
+                                    </th> <!-- Equal width for Discounted Unit Price -->
+                                    <th style="width: 120px;">Amount (US$)</th> <!-- Adjust width for Amount -->
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <!-- Loop for Table Rows -->
+                                <t t-set="counter" t-value="1"/>
+                                <t t-set="total_amount" t-value="0"/>
+                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                    <tr>
+                                        <td style="text-align: center;">
+                                            <t t-esc="counter"/>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <t t-esc="line.name"/>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <t t-esc="line.quantity" t-options="{'widget': 'float', 'precision': 2}"/>
+                                        </td>
+                                        <td style="text-align: center;">
+                                            <!-- Calculate Discounted Price: Original Price - (Discount % of Original Price) -->
+                                            <t t-set="discounted_price"
+                                               t-value="line.price_unit * (1 - (line.discount / 100))"/>
+                                            <t t-esc="discounted_price"
+                                               t-options="{'widget': 'float', 'precision': 2}"/>
+                                        </td>
+                                        <td style="text-align: right;">
+                                            <t t-esc="line.price_subtotal"
+                                               t-options="{'widget': 'float', 'precision': 2}"/>
+                                            <t t-set="total_amount" t-value="total_amount + line.price_subtotal"/>
+                                        </td>
+                                    </tr>
+                                    <t t-set="counter" t-value="counter + 1"/>
+                                </t>
+                                <tr>
+                                    <td colspan="4" style="text-align: end"><strong>Grand Total <span
+                                            t-field="o.currency_id.name"/><span
+                                            t-field="o.currency_id.symbol"/></strong></td>
+                                    <td style="text-align: right;"><strong><span t-field="o.currency_id.name"/><span
+                                            t-field="o.currency_id.symbol"/> <t t-esc="total_amount"
+                                                                                t-options="{'widget': 'float', 'precision': 2}"/></strong></td>
+                                </tr>
+                                <tr>
+                                    <th style="text-align: start; border-right: 0px;"><strong>(Text)</strong></th>
+                                    <td style="border-left: 0px; border-right: 0px;"></td> <!-- Left and Right borders removed -->
+                                    <td style="border-left: 0px; border-right: 0px;"></td> <!-- Left and Right borders removed -->
+                                    <th style="text-align: end; border-right: 0px;"><strong>TOTAL
+                                        (PKR)</strong></th> <!-- Right border removed -->
+                                    <th style="text-align: right; border-left: 0px;">
+                                        <strong>
+                                            PKR <t t-set="usd_to_pkr_rate" t-value="o.exchange_rate_usd_to_pkr"/>
+                                            <t t-set="total_in_pkr" t-value="o.amount_total * usd_to_pkr_rate"/>
+                                            <t t-options="{'widget': 'float', 'precision': 2}" t-esc="total_in_pkr"/>
+                                        </strong>
+                                    </th>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                        <div class="col-12" style="margin-top: -18px;">
+                            <div style="border: 1px solid black; padding: 10px;">
+                                <p style="margin: 0;"><strong>Payment to be made in favor of:</strong></p>
+                                <div style="display: flex; flex-direction: column; gap: 5px;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span><strong>A/c Title:</strong></span>
+                                        <span>Business Solutions</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span><strong>A/c #:</strong></span>
+                                        <span>0958486551010221</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span><strong>IBAN:</strong></span>
+                                        <span>PK76MUCB0958486551010221</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span><strong>SWIFT:</strong></span>
+                                        <span>MUCBPKKA</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span><strong>Address:</strong></span>
+                                        <span>MCB Model Town Branch, Bank Square Market, Lahore, PAKISTAN</span>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <span><strong>Payment Method:</strong></span>
+                                        <span>Direct Deposit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="paper_format_bss_invoice_report" model="report.paperformat">
+        <field name="name">BSS Invoice Paper Format</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="margin_top">30</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <record id="action_bss_invoice_template" model="ir.actions.report">
+        <field name="name">BSS Invoice (Customer Invoice)</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">gd_custom_reports.report_bss_customer_invoice_template</field>
+        <field name="report_file">gd_custom_reports.report_bss_customer_invoice_template</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="gd_custom_reports.paper_format_bss_invoice_report"/>
+    </record>
+
+
+</odoo>
