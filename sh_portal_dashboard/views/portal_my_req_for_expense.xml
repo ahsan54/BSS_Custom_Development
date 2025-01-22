@@ -1,0 +1,582 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- M Arsalan --> 
+    <!-- Appraisal Goals  list view-->
+    <template id="portal_my_req_Appraisal" name="Request Appraisal Goals">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">my_req_Appraisal</t>
+                <div class="row mb-4">
+                    <div class="col-3">
+                        <a href="/my/Goal/request">
+                            <button class="btn btn-primary">Submit Goal</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Employee</th>
+                                <th>Expense Date</th>
+                                <th>Expense Amount</th>
+                                <th>Expense Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="expense_request" t-as="expense">
+                                <tr>
+                                    <td>
+                                        <span t-esc="expense.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.employee_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.date" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.total_amount_company" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.state" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+     <!-- Form View Of Requesting Appraisal Goals -->
+     <template id="portal_my_req_Appraisal_form" name="Appraisal Goals form">
+        <t t-call="portal.portal_layout">
+            <div class="card shadow-lg  mb-5 bg-body-tertiary rounded  row mt16 mb16 justify-content-center">
+                <t t-set="page_name">my_req_Appraisal</t>
+                <div class="card-header p-3 mb-2 text-white" style="background: #3f51b5;">
+                    <h3>New Appraisal</h3>
+                </div>
+                <form class="mt32 req_loan_submit_form" enctype="multipart/form-data" t-attf-action="/my/Goal/request" method="POST">
+              <div class="card-body">
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">Start date of evaluation</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="date" class="form-control" name="date_start" id='date_start'/>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">End date of evaluation.</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="date" class="form-control" name="date_end" id='date_end'/>
+                        </div>
+                    </div>
+                    
+                    <t t-set="employee_id" t-value="request.env.user.employee_ids"/>
+                    <t t-set="department" t-value="request.env['hr.department'].sudo().browse(employee_id.id)"/>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="description" class="form-label">Department of the resource</label>
+                        </div>
+                        <div class="col-8">
+                          <t t-esc="employee_id.department_id.name"/>
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="description" class="form-label">Resource Name</label>
+                        </div>
+                        <div class="col-8">
+                          <t t-esc="employee_id.name"/>
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="description" class="form-label">Designation</label>
+                        </div>
+                        <div class="col-8">
+                          <t t-esc="employee_id.job_id.name"/>
+                        </div>
+                    </div>
+                    
+                    <div class="p-3 mb-2 text-white" style="background: #3f51b5;">
+                       <h5>Areas of each dimension</h5>
+                    </div>
+                    <!-- <div class="row p-2"> 
+                      <div class="col-8">
+                        <label for="description" class="form-label">1. Adding value to our clients</label><br/>
+                        <input type="text" class="form-control" id="description" placeholder="e.g. Lunch with Customer" name="1Q/A"/>
+                      </div>
+                    </div>
+                    <div class="row p-2">
+                      <div class="col-8">
+                        <label for="description" class="form-label">2. Adding value to our people.</label><br/>
+                        <input type="text" class="form-control" id="description" placeholder="e.g. Lunch with Customer" name="2Q/A"/>
+                      </div>
+                    </div>
+                    <div class="row p-2">
+                      <div class="col-8">
+                        <label for="description" class="form-label">3. Adding value to our firm.</label><br/>
+                        <input type="text" class="form-control" id="description" placeholder="e.g. Lunch with Customer" name="3Q/A"/>
+                      </div>
+                    </div>
+                    <div class="row p-2">
+                      <div class="col-8">
+                        <label for="description" class="form-label">4. Soft skills</label><br/>
+                        <input type="text" class="form-control" id="description" placeholder="e.g. Lunch with Customer" name="4Q/A"/>
+                      </div> -->
+                    <!-- </div> -->
+                    
+                  </div>
+                  
+                    <div class="card-footer p-3">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <a href="/my/req_Appraisal" class="btn btn-outline-dark"> Back </a>
+                    </div>
+                </form>
+            </div>
+        </t>
+        <script>
+            var dateStartInput = document.getElementById('date_start');
+            var dateEndInput = document.getElementById('date_end');
+
+            var today = new Date();
+            var nextDay = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+            var minDate = nextDay.toISOString().split('T')[0];
+    
+            dateStartInput.setAttribute('min', minDate);
+            dateEndInput.setAttribute('min', minDate);
+        </script>
+    </template>
+
+    <!-- Syed Owais Noor --> 
+    <!-- Loan and Advance list view-->
+    <template id="portal_my_req_loan_and_advance" name="Request Loan and Advance">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">my_req_loan_and_advance</t>
+                <div class="row mb-4">
+                    <div class="col-3">
+                        <a href="/my/loan/request">
+                            <button class="btn btn-primary">Submit Loan</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Table column (takes 10 of 12 cols) -->
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Employee</th>
+                                    <th>Date</th>
+                                    <th>Loan Amount</th>
+                                    <th>Paid Amount</th>
+                                    <th>Remaining Amount</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="loan_request" t-as="loan">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="loan.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="loan.employee_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="loan.date"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="loan.loan_amount"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="loan.total_paid_amount"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="loan.balance_amount"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="loan_states[loan.state]"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <a t-att-href="'/my/loan_details/' + str(loan.id)">
+                                                <button class="btn btn-primary">View Details</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <template id="loan_detail_template" name="Loan Detail Template">
+        <t t-call="website.layout">
+            <div class="container">
+                <h3 class="text-center">Loan Details - <t t-esc="loan_data['description']"/></h3>
+
+                <h4 class="text-center">Installment Details</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Paid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="loan_data['loan_lines']" t-as="line">
+                            <tr>
+                                <td><t t-esc="line['date']"/></td>
+                                <td><t t-esc="line['amount']"/></td>
+                                <td>
+                                    <t t-if="line['paid']">Yes</t>
+                                    <t t-else="">No</t>
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                <a href="/my/req_loan_and_advance" class="oe_highlight">Back</a>
+            </div>
+        </t>
+    </template>
+
+    <!-- Syed Owais Noor --> 
+    <!-- Form View Of Requesting Loan and Advance -->
+    <template id="portal_my_req_loan_and_advance_form" name="Loan and advance form">
+        <t t-call="portal.portal_layout">
+            <div class="card shadow-lg  mb-5 bg-body-tertiary rounded  row mt16 mb16 justify-content-center">
+                <t t-set="page_name">my_req_loan_and_advance</t>
+                <div class="card-header p-3 mb-2 text-white" style="background: #3f51b5;">
+                    <h3>New Loan and Advance</h3>
+                </div>
+                <form class="mt32 req_loan_submit_form" enctype="multipart/form-data" t-attf-action="/my/loan_and_advance/request" method="POST">
+                <div class="card-body">
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="request_type" class="form-label">Request Type</label>
+                        </div>
+                        <div class="col-8">
+                            <select id="product_selection1" class="select2" name="request_type">
+                                <option disabled="disabled" selected="selected">Select Type</option>
+                                <option value="loan">Loan</option>
+                                <option value="advance">Advance</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="loan_amount" class="form-label">Loan Amount</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="number" class="form-control" id="loan_amount"
+                                placeholder="Loan Amount" name="loan_amount" />
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="intsallment_number" class="form-label">No. of Installments</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="number" class="form-control" id="intsallment_number"
+                                placeholder="No. of Installments" name="intsallment_number" />
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">Submission Date</label>
+                        </div>
+                        <div class="col-8">
+                            <input id="date" type="date" class="form-control" name="submission_date"/>
+                        </div>
+                    </div>
+                  
+                    <div class="card-footer p-3">
+                        <button id="submitBtn" class="btn btn-primary" type="submit">Submit</button>
+                        <a href="/my/req_loan_and_advance" class="btn btn-outline-dark"> Back </a>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </t>
+        <script>
+        <!-- ##Huzaifa -->
+            document.addEventListener('DOMContentLoaded', function () {
+                var contractWage = <t t-esc="contract_wage"/>;  // Embed the contract wage value
+                var maxLoanAmount = contractWage * 0.8;  // Calculate 80% of the contract wage
+
+                document.getElementById('submitBtn').addEventListener('click', function (event) {
+                    event.preventDefault(); // prevent form submission for now
+                    var requestType = document.getElementById('product_selection1').value;
+                    var installmentNumber = document.getElementById('intsallment_number').value;
+                    var loanAmount = parseFloat(document.getElementById('loan_amount').value);
+                    
+                    <!--console.log([requestType, loanAmount, contractWage]);-->
+                    
+                    if (requestType === 'advance') {
+                          if (loanAmount &gt; contractWage) {
+                              console.log([requestType, loanAmount, contractWage]);
+                              alert('Advance amount cannot exceed your salary.');
+                              document.getElementById('loan_amount').value = '';
+                              <!--event.preventDefault();-->
+                          } else if (installmentNumber &gt; 1) {
+                              alert('Installment in Advance cannot be more than 1');
+                              document.getElementById('intsallment_number').value = '';
+                              <!--event.preventDefault();-->
+                          } else {
+                              // If validation passes, submit the form
+                              document.querySelector('.req_loan_submit_form').submit();
+                          }
+                    } else if (requestType === 'loan') {
+
+                        if (loanAmount &gt; maxLoanAmount+1) {
+
+                            alert('The loan amount cannot be more than 80% of your monthly wage!');
+
+                            document.getElementById('loan_amount').value = '';
+
+                        } else {
+
+                            // If validation passes, submit the form
+
+                            document.querySelector('.req_loan_submit_form').submit();
+
+                        }
+
+                    } else {
+                        // If validation passes, submit the form
+                        document.querySelector('.req_loan_submit_form').submit();
+                    }
+                });
+            });
+
+            var dateInput = document.getElementById('date');
+            var today = new Date();
+            var currentMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+            var minDate = currentMonth.toISOString().split('T')[0];
+            dateInput.setAttribute('min', minDate);
+        </script>
+    </template>
+
+    <!-- M Arsalan -->
+    <template id="portal_my_req_for_expense" name="Request For Expense">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">req_for_expense</t>
+                <div class="row mb-4">
+                    <div class="col-3">
+                        <a href="/my/expense/request">
+                            <button class="btn btn-primary">Request Expense</button>
+                        </a>
+                        <a href="/my/expense/approved">
+                            <button class="btn btn-success">Approved Requests</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Employee</th>
+                                <th>Expense Date</th>
+                                <th>Expense Amount</th>
+                                <th>Expense Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="expense_request" t-as="expense">
+                                <tr>
+                                    <td>
+                                        <span t-esc="expense.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.employee_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.date" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.total_amount_company" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.state" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <!-- Approved Requests For Expense -->
+    <template id="portal_my_approved_req_for_expense" name="Approved Requests For Expense">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">req_for_app_expense</t>
+                <div class="row mb-4">
+                    <div class="">
+                        <a href="/my/expense/request">
+                            <button class="btn btn-primary">Request Expense</button>
+                        </a>
+                        <a href="/my/req_for_exp">
+                            <button class="btn btn-danger">Pending Requests</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Employee</th>
+                                <th>Expense Date</th>
+                                <th>Expense Amount</th>
+                                <th>Expense Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="expense_request" t-as="expense">
+                                <tr>
+                                    <td>
+                                        <span t-esc="expense.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.employee_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.date" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.total_amount_company" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="expense.state" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+
+    <!-- Form View Of Requesting expense -->
+    <template id="portal_my_expense_request" name="My Expense Request">
+        <!-- Make a form in which Employee field have already data of current user Date, current
+        date, Loan AMount, No of installment  -->
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">req_for_expense</t>
+                <h3>New Expense</h3>
+                <form class="mt32 req_loan_submit_form" enctype="multipart/form-data"
+                    t-attf-action="/my/expense/request" method="POST">
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">Employee</label>
+                        </div>
+                        <div class="col-8">
+                            <span t-esc="current_employee" />
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">Expense Date</label>
+                        </div>
+                        <div class="col-8">
+                            <span t-esc="current_date" />
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="description" class="form-label">Description</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" class="form-control" id="description"
+                                placeholder="e.g. Lunch with Customer" name="description" />
+                        </div>
+                    </div>
+                    
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="category" class="form-label">Category</label>
+                        </div>
+                        <div class="col-8">
+                            <select id="product_selection1" class="select2" name="Category" style="width: 30%;">
+                                <option disabled="disabled" selected="selected"><span>Select Category</span></option>
+                                <t t-foreach="categories" t-as="category">
+                                    <!--<option t-att-value="product.id" t-att-label="product.name"/>-->
+                                    <option t-att-value="category.id">
+
+                                        <t t-esc="category.name"/>
+
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="total_amount" class="form-label">Total</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="number" class="form-control" id="total_amount"
+                                placeholder="Total Amount" name="total_amount" />
+                        </div>
+                    </div>
+
+                    <!-- <div class="row p-2">
+                        <div class="col-2">
+                            <label for="attachment" class="form-label">Attachments</label>
+                        </div>
+                    </div> -->
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label class="col-form-label" for="attachment">Attach file</label>
+                        </div>
+                        <div class="col-2">
+                            <input type="file" name="att" accept=".png,.pdf"/>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label"></label>
+                        </div>
+                        <div class="col-8">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                            <a href="/my/req_for_exp" class="btn btn-outline-dark"> Back </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

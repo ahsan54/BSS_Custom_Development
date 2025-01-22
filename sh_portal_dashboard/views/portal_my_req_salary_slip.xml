@@ -1,0 +1,163 @@
+<odoo>
+
+    <template id="portal_my_req_salary_slip" name="My Request For Salary Slip">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">req_salary_slip</t>
+                <div class="col-xs-12 mt16">
+                    <t t-call="portal.portal_table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Month</th>
+                                <th>Year</th>
+                                <th>Reason</th>
+                                <th>Request</th>
+                                <th>Status</th>
+                                <th>Salary Slip</th>
+                                <th>Tax Certificate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="payslips" t-as="payslip">
+                                <tr>
+                                    <td><t t-esc="employee_name"/></td>
+                                    <td><t t-esc="payslip.date_to.strftime('%B')"/></td>
+                                    <td><t t-esc="payslip.date_to.strftime('%Y')"/></td>
+                                    <form t-att-action="'/my/req_salary_slip/' + str(payslip.id)" method="POST">
+                                        <td>
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                            <input type="text" class="form-control" name="slip_reason"
+                                                   id="slip_reason_#{payslip.id}" placeholder="Enter Reason/Purpose"
+                                                   required="1"/>
+                                        </td>
+                                        <td>
+                                            <t t-if="payslip.status_request_slip == 'Waiting for request'">
+                                                <button type="submit" class="btn btn-primary">Request</button>
+                                            </t>
+                                        </td>
+                                    </form>
+                                    <td><t t-esc="payslip.status_request_slip"/></td>
+                                    <td>
+                                        <t t-if="payslip.status_request_slip == 'Approved'">
+                                            <a t-att-href="'/my/salary_slip_print/' + str(payslip.id)">
+                                                <button class="btn btn-primary">Preview</button>
+                                            </a>
+                                        </t>
+                                    </td>
+                                    <td class="text-right">
+                                        <t t-if="not payslip.req_tax_certificate">
+                                            <a t-att-href="'/my/tax_certificate/' + str(payslip.id)">
+                                                <button class="btn btn-primary">Request</button>
+                                            </a>
+                                        </t>
+                                        <t t-else="">
+                                            <span class="text-muted">Request Sent</span>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--    <template id="portal_my_req_salary_slip" name="My Request For Salary Slip">-->
+    <!--        <t t-call="portal.portal_layout">-->
+    <!--            <div class="row mt16 mb16 justify-content-center">-->
+    <!--                <t t-set="page_name">req_salary_slip</t>-->
+    <!--                <div class="col-xs-12 mt16">-->
+    <!--                    <t t-call="portal.portal_table">-->
+    <!--                        <thead>-->
+    <!--                            <tr>-->
+    <!--                                <th>Employee</th>-->
+    <!--                                <th>Month</th>-->
+    <!--                                <th>Year</th>-->
+    <!--                                <th>Description</th>-->
+    <!--                                <th>Request</th>-->
+    <!--                                <th>Status</th>-->
+    <!--                                <th>Salary Slip</th>-->
+    <!--                            </tr>-->
+    <!--                        </thead>-->
+    <!--                        <tbody>-->
+    <!--                            <t t-foreach="payslips" t-as="payslip">-->
+    <!--                                <tr>-->
+    <!--                                    <td>-->
+    <!--                                        <t t-esc="employee_name"/>-->
+    <!--                                    </td>-->
+    <!--                                    <td>-->
+    <!--                                        <t t-esc="payslip.date_from.strftime('%B')"/>-->
+    <!--                                    </td>-->
+    <!--                                    <td>-->
+    <!--                                        <t t-esc="payslip.date_from.strftime('%Y')"/>-->
+    <!--                                    </td>-->
+    <!--                                    <td>-->
+    <!--                                        <input type="text" class="form-control" name="slip_reason" id="dateFrom"/>-->
+    <!--                                    </td>-->
+    <!--                                    <td>-->
+    <!--                                        &lt;!&ndash; pass the id to the href so that get via function &ndash;&gt;-->
+    <!--                                        <t t-if="payslip.status_request_slip == 'Waiting for request'">-->
+    <!--                                            <a t-att-href="'/my/req_salary_slip/' + str(payslip.id)">-->
+    <!--                                                &lt;!&ndash;                                            <a t-att-href="'/my/req_salary_slip/' + str(payslip.id)"&ndash;&gt;-->
+    <!--                                                &lt;!&ndash;                                               onclick="ValidateReason();">&ndash;&gt;-->
+    <!--                                                <button class="btn btn-primary">Request</button>-->
+    <!--                                            </a>-->
+    <!--                                        </t>-->
+    <!--                                    </td>-->
+    <!--                                    <td>-->
+    <!--                                        <t t-esc="payslip.status_request_slip"/>-->
+    <!--                                    </td>-->
+    <!--                                    <td>-->
+    <!--                                        &lt;!&ndash; condition of approval is removed as this work is done before approval work &ndash;&gt;-->
+    <!--                                        &lt;!&ndash; <t t-if="payslip.payslip_state == 'Approved'"> &ndash;&gt;-->
+    <!--                                        <t t-if="payslip.status_request_slip == 'Approved'">-->
+    <!--                                            <a t-att-href="'/my/salary_slip_print/' + str(payslip.id)">-->
+    <!--                                                <button class="btn btn-primary">Preview</button>-->
+    <!--                                            </a>-->
+    <!--                                        </t>-->
+    <!--                                        &lt;!&ndash; as go to payslip and get attachment and preview it &ndash;&gt;-->
+    <!--                                        &lt;!&ndash; <t t-esc="get_payslip_from_attachement"/> &ndash;&gt;-->
+    <!--                                        &lt;!&ndash; </t> &ndash;&gt;-->
+    <!--                                    </td>-->
+    <!--                                </tr>-->
+    <!--                            </t>-->
+    <!--                        </tbody>-->
+    <!--                    </t>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </t>-->
+    <!--    </template>-->
+
+    <!-- Request For Salary Slip Approval -->
+    <record id="pay_slip_view_id_inherit_hr_payslip" model="ir.ui.view">
+        <field name="name">pay.slip.view.id.inherit.hr.payslip</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field name="arch" type="xml">
+            <!--            <xpath expr="//header" position="inside">-->
+            <xpath expr="//field[@name='struct_id']" position="after">
+                <field name="is_request_salary_slip" invisible="0"/>
+                <field name="status_request_slip" invisible="0"/>
+            </xpath>
+            <!--                <button string="Approve Payshlip" name="action_approve" type="object"-->
+            <!--                    class="oe_highlight"-->
+            <!--                    attrs="{'invisible': [('is_request_salary_slip', '=', False)]}" />-->
+            <!--            </xpath>-->
+        </field>
+    </record>
+
+    <record id="hr_payslip_action_approval" model="ir.actions.act_window">
+        <field name="name">Pay Slip Approval</field>
+        <field name="res_model">hr.payslip</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('is_request_salary_slip', '=', True)]</field>
+        <field name="context">{}</field>
+    </record>
+    <menuitem id="menu_salary_approval"
+              action="hr_payslip_action_approval"
+              parent="hr_payroll.menu_hr_payroll_payslips"
+              sequence="101"
+              name="Payslips For Approval"/>
+</odoo>

@@ -1,0 +1,78 @@
+<odoo>
+    
+    <template id="portal_my_attendance_detail" name="Attendance Detail">
+        <t t-call="portal.portal_layout">
+            <!-- <t t-set="breadcrumbs_searchbar" t-value="True"/> -->
+            <!-- <t t-call="portal.portal_searchbar">
+                <t t-set="title">Attendance</t>
+            </t> -->
+            <div class="row mt16 mb16">
+
+                <t t-set="page_name">attendance</t>
+
+                <!-- <t t-call="portal.portal_searchbar"/> -->
+                <form class="mt32 req_loan_submit_form" t-attf-action="/my/attendance" method="POST">
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="from_date" class="form-label">From Date:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="date" class="form-control" name="from_date" id="from_date"/>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="to_date" class="form-label">To Date:</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="date" class="form-control" name="to_date" id="to_date"/>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- </t> -->
+               
+            </div>
+        </t>
+
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                document.getElementById('submitBtn').addEventListener('click', function (event) {
+                    var fromDate = document.getElementById('from_date').value;
+                    var toDate = document.getElementById('to_date').value;
+
+                    if (!fromDate || !toDate) {
+                        alert('Date should not be empty');
+                        event.preventDefault(); // prevent form submission
+                        return false;
+                    }
+
+                    event.preventDefault(); // prevent form submission for now
+
+                    var fromDateObj = new Date(fromDate);
+                    var toDateObj = new Date(toDate);
+
+                    var difference = toDateObj - fromDateObj;
+                    var daysDifference = difference / (1000 * 60 * 60 * 24);
+
+                    if (toDateObj &lt; fromDateObj) {
+                        alert('To Date cannot be before From Date');
+                    } else if (daysDifference &gt; 45) {
+                        alert('The selected period should not be greater than 1.5 Months');
+                    } else {
+                        document.querySelector('.req_loan_submit_form').submit();
+                    }
+                });
+            });
+        </script>
+
+
+    </template>
+
+</odoo>

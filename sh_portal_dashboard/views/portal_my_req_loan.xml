@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- Request For Loan -->
+    <template id="portal_my_req_loan" name="Request For Loan">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">req_salary_loan</t>
+                <div class="row mb-4">
+                    <div class="col-1">
+                        <a href="/my/loan/request">
+                            <button class="btn btn-primary">Request</button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="/my/loan/approved">
+                            <button class="btn btn-primary">Approved Requests</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Employee</th>
+                                <th>Date</th>
+                                <th>Loan Amount</th>
+                                <th>Number Of Installments</th>
+                                <th>Loan/ Advance Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="loan_request" t-as="loan">
+                                <tr>
+                                    <td>
+                                        <span t-esc="loan.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.employee_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.date" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.loan_amount" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.installment" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.state" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Approved Request of Loan -->
+    <template id="portal_my_req_loan_approved" name="Approved request For Loan">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">approved_req_salary_loan</t>
+                <div class="row mb-4">
+                    <div class="col-1">
+                        <a href="/my/loan/request">
+                            <button class="btn btn-primary">Request</button>
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="/my/req_loan">
+                            <button class="btn btn-primary">Pending Requests</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Employee</th>
+                                <th>Date</th>
+                                <th>Loan/ Advance Amount</th>
+                                <th>No. Of Installments</th>
+                                <th>Remaining Installments</th>
+                                <th>Paid Amount</th>
+                                <th>Loan/ Advance Status</th>
+                                <th>Grant Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="loan_request" t-as="loan">
+                                <tr>
+                                    <td>
+                                        <span t-esc="loan.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.employee_id.name" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.date" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.loan_amount" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.installment" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="remaining_installment" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.total_paid_amount" />
+                                    </td>
+                                    <td>
+                                        <span t-esc="loan.state" />
+                                    </td>
+                                    <td>
+                                        <!-- Displaying req_type directly -->
+                                        <span t-esc="loan.req_type"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Form View Of Requesting Loan -->
+    <template id="portal_my_loan_request" name="My Loan Request">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+                <t t-set="page_name">req_salary_loan</t>
+                <form class="mt32 req_loan_submit_form" enctype="multipart/form-data"
+                    t-attf-action="/my/loan/request" method="POST">
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">Employee</label>
+                        </div>
+                        <div class="col-8">
+                            <span t-esc="current_employee" />
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label">Date</label>
+                        </div>
+                        <div class="col-8">
+                            <span t-esc="current_date" />
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="req_type" class="form-label">Request Type</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="radio" id="loan" name="req_type" value="loan" />
+                            <label for="loan">Loan</label>
+                            <input type="radio" id="advance" name="req_type" value="advance" />
+                            <label for="advance">Advance</label>
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="loan_amount" class="form-label">Loan/ Advance Amount</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="number" class="form-control" id="loan_amount"
+                                placeholder="Loan/ Amount Amount" name="loan_amount" />
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="no_of_installment" class="form-label">No of Installment</label>
+                        </div>
+                        <div class="col-8">
+                            <input type="number" class="form-control" id="no_of_installment"
+                                placeholder="No of Installment" name="no_of_installment" />
+                        </div>
+                    </div>
+                    <div class="row p-2">
+                        <div class="col-2">
+                            <label for="formGroupExampleInput" class="form-label"></label>
+                        </div>
+                        <div class="col-8">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <!-- Inherit view for loan form -->
+    <record id="inherit_loan_inherit_ohrms" model="ir.ui.view">
+        <field name="name">inherit.loan.inherit.ohrms</field>
+        <field name="model">hr.loan</field>
+        <field name="inherit_id" ref="ent_ohrms_loan.hr_loan_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_position']" position="after">
+                <field name="req_type"></field>
+            </xpath>
+        </field>
+    </record>
+</odoo>

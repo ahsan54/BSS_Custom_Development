@@ -1,0 +1,122 @@
+<odoo>
+    <template id="portal_my_checkin_checkout" name="Check In / Check Out">
+        <t t-call="portal.portal_layout">
+            <div class="row mt16 mb16 justify-content-center">
+
+                <t t-set="page_name">checkin_checkout</t>
+
+                <!-- <t t-call="portal.portal_searchbar"/> -->
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center mb-4">
+                    <a class="btn btn-primary" href="/my/attendance">Records</a>
+                    <t t-if="checked_in">
+                        <a class="btn btn-danger" href="/my/attendance/checkout">Check Out</a>
+                        <!-- show the time of check in -->
+                        <div class="alert alert-success mt8" role="alert">
+                            <t t-esc="checked_in_time"/>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <a class="btn btn-success" href="/my/attendance/checkin">Check In</a>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_attendance" name="Pending Orders">
+        <t t-call="portal.portal_layout">
+            <!-- <t t-set="breadcrumbs_searchbar" t-value="True"/> -->
+            <!-- <t t-call="portal.portal_searchbar">
+                <t t-set="title">Attendance</t>
+            </t> -->
+            <div class="row mt16 mb16">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-center  mb-4">
+                    <a href="/my/checkin_checkout">
+                        <button string="Check In / Check Out" name="action_checkin_checkout"
+                                type="object" class="btn btn-primary">Check In / Check Out
+                        </button>
+                    </a>
+                </div>
+
+                <t t-set="page_name">attendance</t>
+
+                <!-- <t t-call="portal.portal_searchbar"/> -->
+
+                <t t-if="attendances">
+                    <t t-call="portal.portal_table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Check In</th>
+                                <th>Check Out</th>
+                                <th>Work Hours</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <t t-set="attendance_index_check_in" t-value="0" />
+                            <t t-set="attendance_index_check_out" t-value="0" /> -->
+                            <t t-foreach="attendances" t-as="attendance">
+                                <tr>
+                                    <td>
+                                        <t t-esc="attendance.employee_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-if="attendance.check_in">
+                                            <t t-set="check_in_time" t-value="attendance.check_in"/>
+                                            <t t-set="check_in_new_time"
+                                               t-value="check_in_time + datetime.timedelta(hours=5)"/>
+                                            <t t-if="check_in_new_time">
+                                                <t t-esc="check_in_new_time"/>
+                                            </t>
+                                        </t>
+                                        <!-- <t t-esc="attendance.check_in" /> -->
+                                        <!-- <t t-esc="check_in[attendance_index_check_in]" />
+                                        <t t-set="attendance_index_check_in" t-value="attendance_index_check_in + 1" /> -->
+                                    </td>
+                                    <td>
+                                        <t t-if="attendance.check_out">
+                                            <t t-set="check_out_time" t-value="attendance.check_out"/>
+                                            <t t-set="check_out_new_time"
+                                               t-value="check_out_time + datetime.timedelta(hours=5)"/>
+                                            <t t-if="check_out_new_time">
+                                                <t t-esc="check_out_new_time"/>
+                                            </t>
+                                        </t>
+                                        <!-- <t t-esc="attendance.check_out" /> -->
+                                        <!-- <t t-esc="check_out[attendance_index_check_out]" />
+                                        <t t-set="attendance_index_check_out" t-value="attendance_index_check_out + 1" /> -->
+                                    </td>
+                                    <td>
+                                        <!--                                        <t t-esc="attendance.worked_hours" />-->
+                                        <t t-esc="'{:02d}:{:02d}'.format(int(attendance.worked_hours), int((attendance.worked_hours * 60) % 60))"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="status_dict[attendance.status]"/>
+                                        <!-- <t t-if="attendance.status == half_day">
+                                            <t t-esc="Half-Day"/>
+                                        </t>
+                                        <t t-if="attendance.status == late">
+                                            <t t-esc="Late"/>
+                                        </t>
+                                        <t t-if="attendance.status == ok">
+                                            <t t-esc="Ok"/>
+                                        </t>
+                                        <t t-if="attendance.status == absent">
+                                            <t t-esc="Absent"/>
+                                        </t> -->
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </t>
+                </t>
+                <t t-else="">
+                    <div class="alert alert-warning mt8" role="alert">
+                        No attendance records found
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

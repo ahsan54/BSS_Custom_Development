@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sh_portal_dashboard_website_res_config_settings" model="ir.ui.view">
+        <field name="name">sh.portal.dashboard.website.res.config.settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Portal Dashboard" string="Portal Dashboard" data-key="sh_portal_dashboard">
+                    <h2>Portal Dashboard</h2>
+                    <div class="row mt16 o_settings_container" id="id_sh_portal_dashboard">
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_sale_chart" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Sales Analysis (Sales Chart)?" for="sh_portal_dashboard_is_show_sale_chart" />
+                                <div class="text-muted">
+                                    Show sale analysis chart in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_purchase_chart" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Purchase Analysis (Purchase Chart)?" for="sh_portal_dashboard_is_show_purchase_chart" />
+                                <div class="text-muted">
+                                    Show purchase analysis chart in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_invoice_chart" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Invoice Analysis (Invoice Chart)?" for="sh_portal_dashboard_is_show_invoice_chart" />
+                                <div class="text-muted">
+                                    Show invoice analysis chart in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_bill_chart" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Bills Analysis (Bills Chart)?" for="sh_portal_dashboard_is_show_bill_chart" />
+                                <div class="text-muted">
+                                    Show bill analysis chart in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_project_task_chart" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Project Task Table?" for="sh_portal_dashboard_is_show_project_task_chart" />
+                                <div class="text-muted">
+                                    Show project task table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label string="How Many Recent Records Do You Want To Show?" for="sh_portal_dashboard_is_show_last_record_limit" />
+                                <div class="text-muted">
+                                    How many recent/last records do you want to show in table eg. 5, 10 etc.
+                                </div>
+                                <div class="mt8">
+                                    <field name="sh_portal_dashboard_is_show_last_record_limit" placeholder="5" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_quote_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Quotation Table?" for="sh_portal_dashboard_is_show_last_quote_table" />
+                                <div class="text-muted">
+                                    Show recent quotation table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_sale_order_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Sale Order Table?" for="sh_portal_dashboard_is_show_last_sale_order_table" />
+                                <div class="text-muted">
+                                    Show recent Sale Order table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_rfq_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent RFQ Table?" for="sh_portal_dashboard_is_show_last_rfq_table" />
+                                <div class="text-muted">
+                                    Show recent RFQ table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_purchase_order_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Purchase Order Table?" for="sh_portal_dashboard_is_show_last_purchase_order_table" />
+                                <div class="text-muted">
+                                    Show recent Purchase Order table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                          <!-- <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_inventory_transfer_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Inventory transfer Table?" for="sh_portal_dashboard_is_show_last_inventory_transfer_table" />
+                                <div class="text-muted">
+                                    Show recent Inventory Transfer table in portal dashboard.
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_invoice_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Invoice Table?" for="sh_portal_dashboard_is_show_last_invoice_table" />
+                                <div class="text-muted">
+                                    Show recent invoices table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_products_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Products Table?" for="sh_portal_dashboard_is_show_products_table" />
+                                <div class="text-muted">
+                                    Show recent products table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-12 col-md-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="sh_portal_dashboard_is_show_last_bill_table" />
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Is Show Recent Bill Table?" for="sh_portal_dashboard_is_show_last_bill_table" />
+                                <div class="text-muted">
+                                    Show recent bill table in portal dashboard.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

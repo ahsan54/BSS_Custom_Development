@@ -1,0 +1,50 @@
+<odoo>
+    <template id="portal_helpdesk_list_view" inherit_id="helpdesk.portal_helpdesk_ticket">
+        <xpath expr="//t[@t-else='']" position="after">
+            <div>
+                <br/>
+                <span style="font-weight: bold">
+                    MY REGISTERED TICKETS:
+                </span>
+            </div>
+            <div t-if="not my_tickets" class="alert alert-info">
+                You haven't registered any tickets yet.
+            </div>
+            <t t-else="">
+                <div class="row mt16 mb16 justify-content-center">
+                    <div class="row">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <!-- <th>Assigned To</th> -->
+                                    <th>Ticket</th>
+                                    <th>Description</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="my_tickets" t-as="ticket">
+                                    <tr>
+                                        <!-- <td>
+                                            <span t-esc="ticket.user_id.name"/>
+                                        </td> -->
+                                        <!-- <td>
+                                            <span t-esc="ticket.name"/>
+                                        </td> -->
+                                        <td class="text-start"><a t-attf-href="/helpdesk/ticket/#{ticket.id}"><small>#</small><t t-out="ticket.ticket_ref"/><span class="ms-2" t-field="ticket.name"/></a></td>
+                                        <td>
+                                            <span t-esc="ticket.description"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="ticket.stage_id.name"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

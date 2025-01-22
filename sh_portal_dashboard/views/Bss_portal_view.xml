@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_attendance" name="Portal My Home : My Attendance"
+        inherit_id="portal.portal_my_home" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Attendance</t>
+                <t t-set="url" t-value="'/my/checkin_checkout'" />
+                <t t-set="attendances" t-value="request.env['hr.attendance'].sudo().search([('employee_id', '=', request.env.user.employee_ids.id)])"/>
+                <t t-if="attendances">
+                    <t t-set="count" t-value="len(attendances)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="count" t-value="'0'"/>
+                </t>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Employee Leave Request</t>
+                <t t-set="url" t-value="'/my/req_leave'" />
+                <t t-set="hr_employee_details" t-value="request.env['hr.employee'].sudo().search([('user_id', '=', request.env.user.id)])"/>
+                <t t-if="hr_employee_details">
+                    <t t-set="total_leave" t-value="hr_employee_details.casual_leave + hr_employee_details.annual_leave + hr_employee_details.sick_leave"/>
+                    <t t-set="total_avail_leave" t-value="hr_employee_details.avail_casual_leave + hr_employee_details.avail_annual_leave + hr_employee_details.avail_sick_leave"/>
+                    <t t-set="count" t-value="total_leave - total_avail_leave"/>
+                </t>
+                <t t-else="">
+                    <t t-set="count" t-value="'0'"/>
+                </t>
+            </t>
+            <!-- <t t-if="request.env.user.employee_ids and request.env.user.employee_ids.contract_id and request.env.user.employee_ids.contract_id.contract_type_id.name in ['Permanent', 'Consultant']">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Employee Loan/Advance Request</t>
+                    <t t-set="url" t-value="'/my/req_loan'"/>
+                    <t t-set="loan_req" t-value="request.env['hr.loan'].sudo().search([('employee_id', '=', request.env.user.employee_ids.id),('state','!=','approve')])"/>
+                    <t t-if="loan_req">
+                        <t t-set="count" t-value="len(loan_req)"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="count" t-value="'0'"/>
+                    </t>
+                </t>
+            </t> -->
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Employee Salary Slip Request</t>
+                <t t-set="url" t-value="'/my/req_salary_slip'" />
+                <t t-set="sal_req" t-value="request.env['hr.payslip'].sudo().search([('employee_id', '=', request.env.user.employee_ids.id),('state','in',['done','paid'])], order='id desc',limit=12)"/>
+                <t t-if="sal_req">
+                    <t t-set="count" t-value="len(sal_req)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="count" t-value="'0'"/>
+                </t>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Employee Requesting for Expenses</t>
+                <t t-set="url" t-value="'/my/req_for_exp'" />
+                <t t-set="exp_req" t-value="request.env['hr.expense'].sudo().search([('employee_id', '=', request.env.user.employee_ids.id),('state','not in',['approved','done'])], order='id desc', limit=10)"/>
+                <t t-if="exp_req">
+                    <t t-set="count" t-value="len(exp_req)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="count" t-value="'0'"/>
+                </t>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Appraisal Goals Request</t>
+                <t t-set="url" t-value="'/my/req_Appraisal'" />
+                <t t-set="exp_req" t-value="request.env['hr.expense'].sudo().search([('employee_id', '=', request.env.user.employee_ids.id),('state','not in',['approved','done'])], order='id desc', limit=10)"/>
+                <t t-if="exp_req">
+                    <t t-set="count" t-value="len(exp_req)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="count" t-value="'0'"/>
+                </t>
+            </t>
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Loan and Advance</t>
+                <t t-set="url" t-value="'/my/req_loan_and_advance'" />
+                <t t-set="exp_req" t-value="request.env['hr.loan'].sudo().search([('employee_id', '=', request.env.user.employee_ids.id),('state','not in',['approved'])], order='id desc', limit=10)"/>
+                <t t-if="exp_req">
+                    <t t-set="count" t-value="len(exp_req)"/>
+                </t>
+                <t t-else="">
+                    <t t-set="count" t-value="'0'"/>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+
+    <!-- <template id="portal_docs_entry_override" inherit_id="sale.portal_my_home_sale">
+        <xpath expr="//t" position="replace">
+            <span></span>
+        </xpath>
+    </template> -->
+
+
+</odoo>

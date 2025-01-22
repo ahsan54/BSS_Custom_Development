@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_home_menu_my_account" name="Portal layout : My account menu entries" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'my_details' " class="breadcrumb-item active">
+                Your Details
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_attendance" name="Portal layout : My attendance" inherit_id="portal.portal_breadcrumbs" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'attendance' " class="breadcrumb-item active">
+                Attendance
+            </li>
+            <li t-if="page_name == 'req_salary_loan' " class="breadcrumb-item active">
+                My Requests For Salary Loan
+            </li>
+            <li t-if="page_name == 'req_salary_slip' " class="breadcrumb-item active">
+                My Request For Salary Slip
+            </li>
+            <li t-if="page_name == 'checkin_checkout' " class="breadcrumb-item active">
+                Check In / Check Out
+            </li>
+            <li t-if="page_name == 'approved_req_salary_loan' " class="breadcrumb-item active">
+                Approved Loan Requests
+            </li>
+            <li t-if="page_name == 'req_for_expense' " class="breadcrumb-item active">
+                My Expenses
+            </li>
+            <li t-if="page_name == 'req_for_app_expense' " class="breadcrumb-item active">
+                Approved Expenses
+            </li>
+            <li t-if="page_name == 'my_req_leave' " class="breadcrumb-item active">
+                Summary of leave
+            </li>
+            <li t-if="page_name == 'my_leave_request' " class="breadcrumb-item active">
+                Request of leave
+            </li>
+            <li t-if="page_name == 'my_wfh_request' " class="breadcrumb-item active">
+                Request Work For Home 
+            </li>
+            <!-- M arsalan -->
+            <li t-if="page_name == 'my_req_Appraisal' " class="breadcrumb-item active">
+                Request Appraisal and Goals 
+            </li>
+            <!-- Syed Owais Noor -->
+            <li t-if="page_name == 'my_req_loan_and_advance' " class="breadcrumb-item active">
+                Request Loan and Advance
+            </li>
+        </xpath>
+    </template>
+    
+
+    <template id="portal_my_home_my_account" name="Portal My Home : My account entries" inherit_id="portal.portal_my_home" priority="30">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Your Details</t>
+                <t t-set="url" t-value="'/my/account'" />
+                <t t-set="count" t-value="1" />
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_docs_entry" inherit_id="portal.portal_docs_entry" name="SH My Portal Docs Entry">
+        <xpath expr="//a[hasclass('list-group-item')]" position="replace">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <div class="sh_box mt-5">
+                    <div class="sh_content">
+                        <!-- <t t-set="pre_defined_icon" t-value="['/my/account', '/my/leads', '/my/opportunities', '/my/quotes', '/my/orders', '/my/invoices', '/my/purchase', '/my/projects', '/my/tasks']" /> -->
+                        <t t-set="pre_defined_icon" t-value="['/my/account', '/my/leads', '/my/opportunities', '/my/purchase', '/my/projects', '/my/tasks']" />
+
+                        <span t-if="url == '/my/account' " class="fa fa-user sh_icon"></span>
+
+                        <span
+                            t-if="url == '/my/leads' "
+                            class="fa fa-handshake-o sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(9, 154, 140, 0.4); background: linear-gradient(60deg, #26a69a, #009688);"
+                        ></span>
+
+                        <span
+                            t-if="url == '/my/opportunities' "
+                            class="fa fa-star sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(124, 90, 79, 0.4); background: linear-gradient(60deg, #8a7067, #795548);"
+                        ></span>
+
+                        <span t-if="url == '/my/quotes' " class="fa fa-usd sh_icon" style="background: linear-gradient(60deg, #26c6da, #00acc1); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(0, 188, 212, 0.4);"></span>
+                        <!-- <span
+                            t-if="url == '/my/orders' "
+                            class="fa fa-line-chart sh_icon"
+                            style="background: linear-gradient(60deg, #ec407a, #d81b60); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);"
+                        ></span> -->
+
+                        <!-- <span
+                            t-if="url == '/my/invoices' "
+                            class="fa fa-money sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(76, 175, 80, 0.4); background: linear-gradient(60deg, #66bb6a, #43a047);"
+                        ></span> -->
+
+
+
+                        <!-- <span
+                            t-if="url == '/my/rfq' "
+                            class="fa fa-shopping-cart sh_icon"
+                            style="background: linear-gradient(60deg, #ce93d8, #8e24aa); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(70, 114, 221, 0.4);"
+                        ></span> -->
+
+                        <span
+                            t-if="url == '/my/delieveries' "
+                            class="fa fa-shopping-cart sh_icon"
+                            style="background: linear-gradient(60deg, #ce93d8, #8e24aa); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(70, 114, 221, 0.4);"
+                        ></span>
+                        
+
+                        <span
+                            t-if="url == '/my/purchase' "
+                            class="fa fa-shopping-cart sh_icon"
+                            style="background: linear-gradient(60deg, #4e60c5, #3f51b5); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(70, 114, 221, 0.4);"
+                        ></span>
+
+                        <span
+                            t-if="url == '/my/projects' "
+                            class="fa fa-puzzle-piece sh_icon"
+                            style="background: linear-gradient(60deg, #e4405c, #b00220); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(187, 9, 46, 0.4);"
+                        ></span>
+                        <span
+                            t-if="url == '/my/tasks' "
+                            class="fa fa-tasks sh_icon"
+                            style="background: linear-gradient(60deg, #996ee6, #7f39fb); box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(136, 78, 243, 0.4);"
+                        ></span>
+
+                        <span
+                            t-if="url == '/my/crm_leads' "
+                            class="fa fa-handshake-o sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(9, 154, 140, 0.4); background: linear-gradient(60deg, #26a69a, #009688);"
+                        ></span>
+
+                        <span
+                            t-if="url == '/my/crm_opportunities' "
+                            class="fa fa-star sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(124, 90, 79, 0.4); background: linear-gradient(60deg, #8a7067, #795548);"
+                        ></span>
+
+                        <!-- BSS -->
+                        <span
+                            t-if="url == '/my/req_for_exp' "
+                            class="fa fa-money sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(124, 90, 79, 0.4); background: green;"
+                        ></span>
+                        <span
+                            t-if="url == '/my/req_salary_slip' "
+                            class="fa fa-credit-card sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(124, 90, 79, 0.4); background: black;"
+                        ></span>
+                        <span
+                            t-if="url == '/my/req_loan' "
+                            class="fa fa-university sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(124, 90, 79, 0.4); background: linear-gradient(60deg, #8a7067, #795548);"
+                        ></span>
+                        <span
+                            t-if="url == '/my/req_leave' "
+                            class="fa fa-sign-out sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14); background: purple;"
+                        ></span>
+                        <span
+                            t-if="url == '/my/checkin_checkout' "
+                            class="fa fa-user sh_icon"
+                            style="box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(124, 90, 79, 0.4); background: blue;" 
+                        ></span>
+                        <!-- ###################################################################### -->
+
+                        <div class="sh_description">
+                            <t t-if="count">
+                            	<h3><span style="box-shadow:none !important;background:none !important;" t-esc="count"/></h3>
+                            </t>
+                            <t t-elif="placeholder_count">
+                            	<h3><span style="box-shadow:none !important;background:none !important;" t-att-data-placeholder_count="placeholder_count"/></h3>
+                            </t>
+                            <p><t t-esc="title" /></p>
+                        </div>
+                    </div>
+
+                    <a t-att-href="url" t-att-title="title">
+                        view
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="sh_portal_dashboard_portal_layout" inherit_id="portal.portal_layout" name="Portal Layout">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="o_portal_wrap">
+                <div class="container mb64">
+                    <t t-if="my_details">
+                        <div class="row justify-content-between mt-4">
+                            <div t-attf-class="col-12 col-md-12 col-lg-12">
+                                <t t-raw="0" />
+                            </div>
+                            <div id="o_my_sidebar" class="col-12 col-md col-lg-4 col-xl-3 o_my_sidebar">
+                                <div class="o_my_contact" t-if="sales_user">
+                                    <t t-call="portal.portal_contact" />
+                                </div>
+                                <div class="o_portal_my_details" style="display: none;">
+                                    <h4>
+                                        Your Details <a role="button" href="/my/account" class="btn btn-sm btn-link"><i class="fa fa-pencil" /> Edit</a>
+                                    </h4>
+                                    <hr class="mt-1 mb-0" />
+                                    <div t-field="user_id.partner_id" t-options='{"widget": "contact", "fields": ["email", "phone", "address", "name"]}' />
+                                </div>
+                                <div class="o_my_archives" t-if="archive_groups">
+                                    <t t-call="portal.portal_archive_groups" />
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <t t-raw="0" />
+                    </t>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_portal')]" position="before">
+            <!-- Tiles -->
+            <div class="sh_dashboard_img">
+                <div class="container">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12" style="padding-left: 0px; padding-right: 0px;">
+                        <div class="sh_dasbord_title sh_portal_dashboard_top_breadcrumbs">
+                            <t t-if="page_name == 'home'">Your Documents</t>
+                            <t t-call="portal.portal_breadcrumbs" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sh_portal_dashboard_tiles_before_document_view_main"></div>
+        </xpath>
+    </template>
+
+    <template id="sh_portal_dashboard_portal_my_home" name="Portal My Home : Dashboard" inherit_id="portal.portal_my_home" priority="20">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="attributes">
+            <attribute name="class">o_portal_docs row</attribute>
+        </xpath>
+
+        <!-- To hide header - My Documents -->
+        <xpath expr="//div[hasclass('o_portal_my_home')]/h3" position="attributes">
+            <attribute name="style">display:none;</attribute>
+        </xpath>
+
+        <!-- To Show Charts. -->
+        <!-- <xpath expr="//div[hasclass('o_portal_docs')]" position="after"> -->
+            <!-- <t
+                t-if="request.env.company.sh_portal_dashboard_is_show_sale_chart  or request.env.company.sh_portal_dashboard_is_show_products_table or request.env.company.sh_portal_dashboard_is_show_purchase_chart or request.env.company.sh_portal_dashboard_is_show_invoice_chart or request.env.company.sh_portal_dashboard_is_show_bill_chart or request.env.company.sh_portal_dashboard_is_show_project_task_chart or request.env.company.sh_portal_dashboard_is_show_last_quote_table or request.env.company.sh_portal_dashboard_is_show_last_sale_order_table or request.env.company.sh_portal_dashboard_is_show_last_rfq_table or request.env.company.sh_portal_dashboard_is_show_last_purchase_order_table or request.env.company.sh_portal_dashboard_is_show_last_invoice_table or request.env.company.sh_portal_dashboard_is_show_last_bill_table"
+            >
+                <div class="form-group mt-5">
+                    <label for="sel1">Filter Chart:</label>
+                    <select class="form-control col-md-3 ml-auto" id="js_id_select_filter_chart" style="width:30%">
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="current_week">Current Week</option>
+                        <option value="current_month">Current Month</option>
+                        <option value="current_year">Current Year</option>
+                    </select>
+                </div>
+            </t> -->
+        <!-- To Show product many2many. -->
+              <!-- <t
+                t-if="request.env.company.sh_portal_dashboard_is_show_products_table ">
+                
+                <div class="form-group mt-5">
+                
+                    <label for="sel2">Select Product:</label>
+                    <link href="css/mobiscroll.javascript.min.css" rel="stylesheet" />
+                    <script src="js/mobiscroll.javascript.min.js"></script>
+                    <input mbsc-input="True" id="demo-multiple-select-input" placeholder="Please select..." data-dropdown="true" data-input-style="outline" data-label-style="stacked" data-tags="true" />
+                   
+                    <select name="product_name" id="demo-multiple-select" class="form-control col-md-3 ml-auto"  style="width:30%"  multiple = "multiple">
+                    <t t-set="companies" t-value="request.env['res.users'].sudo().search([('id','=',request.env.user.id)]).company_ids" />
+                        <t t-foreach="companies" t-as="company">
+                            <t t-set="product_rec" t-value="request.env['product.template'].sudo().search([('company_id','=',company.id)])" />
+                             <t t-foreach="product_rec" t-as="product">
+                            <option t-esc='product.name' t-att-value='product.id'/>
+                         </t>
+                         </t>
+
+                    </select>
+                </div>
+            </t> -->
+         
+           
+            <!-- Table Data Start Here -->
+
+            <!-- <div class="row"> -->
+                <!-- Product Table -->
+                <!-- <t t-set="is_installed_stock" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_stock and request.env.company.sh_portal_dashboard_is_show_products_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Products</div>
+                            <table id="js_id_tbl_products_stock" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Quantity on Hand</th>
+                                        <th>Forcasted Quantity</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+
+            <!-- <div class="row"> -->
+                <!-- Quotation Table -->
+                <!-- <t t-set="is_installed_sale" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'sale'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_sale and request.env.company.sh_portal_dashboard_is_show_last_quote_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table"> -->
+                            <!-- <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Quotations</div> -->
+
+                            <!-- <table id="js_id_tbl_last_quote" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Quotation Number</th>
+                                        <th>Order Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t> -->
+                <!-- Sale Order Table -->
+                <!-- <t t-if="is_installed_sale and request.env.company.sh_portal_dashboard_is_show_last_sale_order_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Sale Orders</div>
+                            <table id="js_id_tbl_last_sale_order" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Order Number</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- <div class="row"> -->
+                <!-- RFQ Table -->
+                <!-- <t t-set="is_installed_purchase" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'purchase'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_purchase and request.env.company.sh_portal_dashboard_is_show_last_rfq_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Request for Quotations</div>
+                            <table id="js_id_tbl_last_rfq" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Order Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t> -->
+
+                <!-- Purchase Order Table -->
+                <!-- <t t-if="is_installed_purchase and request.env.company.sh_portal_dashboard_is_show_last_purchase_order_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Purchase Orders</div>
+                            <table id="js_id_tbl_last_purchase_order" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- <div class="row"> -->
+                <!-- transfers Order Table -->
+                <!-- <t t-set="is_installed_stock" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'stock'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_stock and request.env.company.sh_portal_dashboard_is_show_last_inventory_transfer_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Transfers</div>
+                            <table id="js_id_tbl_last_tranfers_order" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Order Date</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t> -->
+            <!-- </div> -->
+
+ 
+
+            <!-- <div class="row"> -->
+                <!-- Invoice Table -->
+                <!-- <t t-set="is_installed_account" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'account'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_account and request.env.company.sh_portal_dashboard_is_show_last_invoice_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Invoices</div>
+                            <table id="js_id_tbl_last_invoice" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Invoice Date</th>
+                                        <th>Due Date</th>
+                                        <th />
+                                        <th class="text-right">Amount Due</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+
+        
+                <t t-if="is_installed_account and request.env.company.sh_portal_dashboard_is_show_last_bill_table">
+                    <div class="col">
+                        <div class="sh_dashboard_table">
+                            <div class="text-center">Latest <t t-esc="request.env.company.sh_portal_dashboard_is_show_last_record_limit" /> Bills</div>
+                            <table id="js_id_tbl_last_bill" class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Invoice #</th>
+                                        <th>Invoice Date</th>
+                                        <th>Due Date</th>
+                                        <th />
+                                        <th class="text-right">Amount Due</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- Table Data Ends Here -->
+
+            <!-- <div class="row"> -->
+                <!-- Sale -->
+                <!-- <t t-set="is_installed_sale" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'sale'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_sale and request.env.company.sh_portal_dashboard_is_show_sale_chart">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="sh_portal_dashboard_chart_bg">
+                            <div id="js_id_sale_bar_chart_div_heading" class="text-center">Sale Chart</div>
+                            <div id="js_id_sale_bar_chart_div" class="ct-chart ct-octave"></div>
+                        </div>
+                    </div>
+                </t> -->
+
+                <!-- Invoice -->
+                <!-- <t t-set="is_installed_account" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'account'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_account and request.env.company.sh_portal_dashboard_is_show_invoice_chart">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="sh_portal_dashboard_chart_bg">
+                            <div id="js_id_invoice_bar_chart_div_heading" class="text-center">Invoice Chart</div>
+                            <div id="js_id_invoice_bar_chart_div" class="ct-chart ct-octave"></div>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- <div class="row"> -->
+                <!-- Purchase -->
+                <!-- <t t-set="is_installed_purchase" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'purchase'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_purchase and request.env.company.sh_portal_dashboard_is_show_purchase_chart">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="sh_portal_dashboard_chart_bg">
+                            <div id="js_id_purchase_bar_chart_div_heading" class="text-center">Purchase Chart</div>
+                            <div id="js_id_purchase_bar_chart_div" class="ct-chart ct-octave"></div>
+                        </div>
+                    </div>
+                </t> -->
+
+                <!-- Bills -->
+                <!-- <t t-set="is_installed_account" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'account'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_account and request.env.company.sh_portal_dashboard_is_show_bill_chart">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="sh_portal_dashboard_chart_bg">
+                            <div id="js_id_bill_bar_chart_div_heading" class="text-center">Bills Chart</div>
+                            <div id="js_id_bill_bar_chart_div" class="ct-chart ct-octave"></div>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- <div class="row"> -->
+                <!-- Sale Product Wise Sale Data-->
+
+                <!-- <t t-set="is_installed_sale" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'sale'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_sale and request.env.company.sh_portal_dashboard_is_show_sale_chart">
+                    <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+                        <div class="sh_portal_dashboard_chart_bg">
+                            <div id="js_id_product_wise_sale_chart_div_heading" class="text-center">Top 10 products sold of the month</div>
+                            <div id="js_id_product_wise_sale_chart_div" class="ct-chart ct-octave"></div>
+                        </div>
+                    </div>
+                </t> -->
+
+                <!-- Purchase Product Wise Purchase Data -->
+                <!-- <t t-set="is_installed_purchase" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'purchase'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_purchase and request.env.company.sh_portal_dashboard_is_show_purchase_chart">
+                    <div class="col-lg-6 col-md-12 col-sm-12col-12">
+                        <div class="sh_portal_dashboard_chart_bg">
+                            <div id="js_id_product_wise_purchase_chart_div_heading" class="text-center">Top 10 products sold of the month</div>
+                            <div id="js_id_product_wise_purchase_chart_div" class="ct-chart ct-octave"></div>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- <br />
+            <br />
+            <div class="row"> -->
+                <!-- Sale Product Wise Sale Data Table-->
+                <!-- <t t-set="is_installed_sale" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'sale'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_sale and request.env.company.sh_portal_dashboard_is_show_sale_chart">
+                    <div class="col-sm">
+                        <div class="sh_portal_dashboard_tbl_heading">
+                            <div id="js_id_tbl_product_wise_sale_heading" class="text-center">Product Wise Sale Data</div>
+                            <table id="js_id_tbl_product_wise_sale" class="table rounded bg-white"></table>
+                        </div>
+                    </div>
+                </t>
+
+                <br />
+                <br /> -->
+
+                <!-- Purchase Product Wise Purchase Data Table -->
+                <!-- <t t-set="is_installed_purchase" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'purchase'), ('state', '=', 'installed')]).id" />
+                <t t-if="is_installed_purchase and request.env.company.sh_portal_dashboard_is_show_purchase_chart">
+                    <div class="col-sm">
+                        <div class="sh_portal_dashboard_tbl_heading">
+                            <div id="js_id_tbl_product_wise_purchase_heading" class="text-center">Product Wise Purchase Data</div>
+                            <table id="js_id_tbl_product_wise_purchase" class="table rounded bg-white"></table>
+                        </div>
+                    </div>
+                </t>
+            </div> -->
+
+            <!-- <br />
+            <br /> -->
+
+            <!-- Project Task Data -->
+            <!-- <t t-set="is_installed_project" t-value="request.env['ir.module.module'].sudo().search([('name', '=', 'project'), ('state', '=', 'installed')]).id" />
+            <t t-if="is_installed_project and request.env.company.sh_portal_dashboard_is_show_project_task_chart">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12 sh_portal_dashboard_tbl_heading">
+                        <div class="text-center">Project Task Data</div>
+                        <table id="js_id_tbl_project_task" class="table rounded bg-white"></table>
+                    </div>
+                </div>
+            </t> -->
+        <!-- </xpath> -->
+    </template>
+
+    <template id="sh_portal_db_dashboard_tiles_before_document_view" name="Tiles Before Document view">
+        
+    </template>
+
+    <template id="sh_portal_dashboard_option_portal_layout_tiles" inherit_id="portal.portal_layout" active="False" customize_show="True" name="Show Tiles Above Document view">
+        <!-- <xpath expr="//div[hasclass('sh_portal_dashboard_tiles_before_document_view_main')]" position="inside">
+            <t t-call="sh_portal_dashboard.sh_portal_db_dashboard_tiles_before_document_view" />
+        </xpath> -->
+    </template>
+
+
+    <template id="sh_portal_dashboard_portal_my_details_fields_update" inherit_id="portal.portal_my_details_fields">
+        
+        <!-- <xpath expr="//div[@t-attf-class='mb-1 #{error.get('company_name') and 'o_has_error' or ''} col-xl-6']" position="replace"> -->
+        
+            <xpath expr="//div[7]" position="replace">
+            </xpath>
+        <xpath expr="//div[6]" position="replace">
+            <div t-attf-class="mb-1 #{error.get('vat') and 'o_has_error' or ''} col-xl-6">
+                <label class="col-form-label label-optional" for="vat">ID Card Number</label>
+                <!-- The <input> use "disabled" attribute to avoid sending an unauthorized value on form submit.
+                     The user might not have rights to change company_name but should still be able to see it.
+                -->
+                <input type="text" name="vat" t-attf-class="form-control #{error.get('vat') and 'is-invalid' or ''}" t-att-value="vat or partner.vat" t-att-disabled="None if partner_can_edit_vat else '1'" />
+                <small t-if="not partner_can_edit_vat" class="form-text text-muted d-block d-xl-none">Changing ID Card number is not allowed once document(s) have been issued for your account. Please contact us directly for this operation.</small>
+            </div>
+            <div t-if="not partner_can_edit_vat" class="col-12 d-none d-xl-block">
+                <small class="form-text text-muted">Changing ID Card number is not allowed once document(s) have been issued for your account. <br/>Please contact us directly for this operation.</small>
+            </div>
+        </xpath>
+        <xpath expr="//div[5]" position="replace">
+        </xpath>
+    </template>
+    <template id="sh_portal_dashboard_portal_my_details">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">Contact Details</t>
+            <form action="/my/account" method="post">
+                <fieldset disabled="disabled">
+                    <div class="row o_portal_details">
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <t t-call="sh_portal_dashboard.sh_portal_dashboard_portal_my_details_fields_update"/>
+                                <input type="hidden" name="redirect" t-att-value="redirect"/>
+                            </div>
+                            <div class="clearfix">
+                                <button type="submit" class="btn btn-primary float-end mb32 ">
+                                    Confirm
+                                    <span class="fa fa-long-arrow-right" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </t>
+    </template>
+</odoo>
