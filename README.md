@@ -134,7 +134,8 @@ Developed the internship_offer_letter report , employee_offer_letter report , no
 
 # Vlc_Wht_Payments : WithHolding Tax
 
-
+Migrated the V17 module to V16.
+This module enhances the payment process by integrating Withholding Tax. It allows automatic calculation of WHT on payments, creates corresponding journal entries for vendor and customer transactions, and supports configuring WHT in  settings of accounts.
 
 
 
