@@ -12,6 +12,8 @@ Cheque numbers are dynamically generated based on the selected bank's sequence. 
 Users can manually update the cheque number. The sequence dynamically adjusts to reflect the next number based on the manually entered value. For example, if the current cheque number is 00003 and the user updates it to 00007, the next cheque number will automatically generate as 00008.
 Ensured that the Meezan and MCB sequences operate independently of each other, preventing any interference between the two categories.
 
+Developed the cheque for MCB , Faysal , Meezan , Askari bank.
+
 
 
 
